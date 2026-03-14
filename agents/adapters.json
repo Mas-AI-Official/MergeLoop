@@ -1,0 +1,36 @@
+{
+  "official": [
+    {
+      "name": "codex",
+      "kind": "builtin",
+      "auth_model": "vendor_cli_auth",
+      "status": "enabled_by_default"
+    },
+    {
+      "name": "gemini",
+      "kind": "builtin",
+      "auth_model": "vendor_cli_auth",
+      "status": "enabled_by_default"
+    },
+    {
+      "name": "local",
+      "kind": "builtin",
+      "auth_model": "user_managed",
+      "status": "enabled_if_configured"
+    }
+  ],
+  "community_examples": [
+    {
+      "name": "antigravity",
+      "kind": "custom_worker",
+      "auth_model": "tool_specific",
+      "status": "opt_in"
+    },
+    {
+      "name": "openclaw",
+      "kind": "custom_worker",
+      "auth_model": "tool_specific",
+      "status": "opt_in"
+    }
+  ]
+}

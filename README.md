@@ -39,6 +39,16 @@ README.md
 
 This project is designed for macOS and Linux first. It is also reasonable on Windows, but WSL is the recommended path when you want the most predictable CLI behavior across Codex, Gemini, and shell-based developer tooling.
 
+## Legal And Trust Model
+
+Councilkit is compliance-first:
+
+- It does not implement OAuth/token scraping or auth replay.
+- It only invokes CLIs that users installed and authenticated.
+- It classifies adapters as official vs community/optional.
+
+See [LEGAL_COMPLIANCE.md](./LEGAL_COMPLIANCE.md) for policy details and source links.
+
 ## Install
 
 ```bash
@@ -100,6 +110,8 @@ Once enabled, Claude Code will discover:
 - [`.claude-plugin/plugin.json`](./.claude-plugin/plugin.json)
 - [`.mcp.json`](./.mcp.json)
 - [`skills/run/SKILL.md`](./skills/run/SKILL.md)
+
+For other IDEs/hosts, use templates in [`integrations/`](./integrations/README.md).
 
 The bundled MCP server starts with:
 
@@ -199,6 +211,13 @@ Example:
 - Only official, already-authenticated local CLIs are invoked
 - Local run artifacts are written to disk; review your persistence directory if prompts may contain sensitive data
 - MCP tool outputs can still contain prompt-injected or untrusted content if the upstream CLI fetched it, so treat synthesis as untrusted until verified
+
+## IDE/Agent Coverage
+
+- Claude Code plugin support: included in-repo (`.claude-plugin`, `.mcp.json`, skill)
+- Cross-IDE templates: VS Code, Cursor, Windsurf, Zed, Neovim, JetBrains
+- Agent adapter registry: see [`agents/adapters.json`](./agents/adapters.json)
+- Additional tools such as Antigravity/OpenClaw: supported via `custom_workers` (opt-in)
 
 ## Examples
 

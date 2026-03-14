@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "council-hub": {
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/dist/server.js"
+      ]
+    }
+  }
+}

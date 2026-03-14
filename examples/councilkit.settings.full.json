@@ -1,0 +1,35 @@
+{
+  "codex_command": "codex",
+  "gemini_command": "gemini",
+  "local_command": null,
+  "default_workers": [
+    "codex",
+    "gemini",
+    "antigravity",
+    "openclaw"
+  ],
+  "timeouts": {
+    "codex_ms": 300000,
+    "gemini_ms": 300000,
+    "local_ms": 180000
+  },
+  "codex": {
+    "use_output_schema": true
+  },
+  "custom_workers": {
+    "antigravity": {
+      "command": "antigravity run \"{task}\"",
+      "timeout_ms": 300000,
+      "output_format": "auto"
+    },
+    "openclaw": {
+      "command": "openclaw \"{task}\"",
+      "timeout_ms": 300000,
+      "output_format": "auto"
+    }
+  },
+  "persistence": {
+    "enabled": true,
+    "directory": "~/.councilkit/runs"
+  }
+}

@@ -13,7 +13,11 @@
     ".claude-plugin",
     ".mcp.json",
     "skills",
+    "integrations",
+    "agents",
+    "examples",
     "README.md",
+    "LEGAL_COMPLIANCE.md",
     "LICENSE",
     "CONTRIBUTING.md",
     "councilkit.settings.json"

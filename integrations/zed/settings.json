@@ -1,0 +1,10 @@
+{
+  "context_servers": {
+    "council-hub": {
+      "command": "node",
+      "args": [
+        "/absolute/path/to/councilkit/dist/server.js"
+      ]
+    }
+  }
+}
