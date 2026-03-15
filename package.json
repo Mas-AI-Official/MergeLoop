@@ -10,6 +10,8 @@
   "files": [
     "dist",
     "bin",
+    "assets",
+    "scripts",
     ".claude-plugin",
     ".mcp.json",
     "skills",
@@ -28,7 +30,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js",
-    "test": "tsx --test test/**/*.test.ts"
+    "test": "tsx --test test/**/*.test.ts",
+    "doctor": "node scripts/doctor.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1"

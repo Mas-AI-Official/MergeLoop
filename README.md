@@ -1,152 +1,114 @@
 # councilkit
 
-`councilkit` is a Claude Code plugin plus bundled MCP stdio server that runs official local model CLIs in parallel, captures what each one said, and returns a synthesis-ready bundle. The code never makes direct vendor API calls. It only invokes CLIs that the user already installed and authenticated themselves.
+![CouncilKit Logo](./assets/logo.svg)
 
-The bundled server is named `council-hub` and exposes one primary MCP tool: `council_run`.
+**CouncilKit is a local orchestration layer for model CLIs.**
 
-## What It Does
+Run Claude Code, Codex CLI, Gemini CLI, and optional community tools in parallel, then merge outputs into one structured result. No direct API calls are required in councilkit code.
 
-- Adds a Claude Code skill at `/councilkit:run`
-- Starts the bundled `council-hub` MCP server automatically through `.mcp.json`
-- Runs `codex` and `gemini` in parallel in `council` mode, or just the first selected worker in `single` mode
-- Supports custom worker CLIs through settings (`antigravity`, `openclaw`, or any local command)
-- Captures `stdout`, `stderr`, exit state, parsed JSON when available, disagreement signals, and suggested next checks
-- Persists each run to local disk at `~/.councilkit/runs/<timestamp>.json` by default
+## Why This Is Useful
 
-## Repository Layout
+- Use your existing subscriptions, not only API billing.
+- Split tasks across model strengths at the same time.
+- Keep one shared output format for agreement, disagreement, and next checks.
+- Keep data local by default with on-disk run logs.
 
-```text
-.claude-plugin/
-.github/
-bin/
-dist/
-doc/
-skills/
-src/
-test/
-.mcp.json
-councilkit.settings.json
-package.json
-README.md
-```
+## What It Can Actually Do Today
 
-## Requirements
+- Claude Code plugin with `/councilkit:run` skill.
+- Bundled MCP stdio server (`council-hub`) that auto-starts via `.mcp.json`.
+- Primary MCP tool: `council_run`.
+- Built-in workers: `codex`, `gemini`, `local`.
+- Custom workers via settings (`antigravity`, `openclaw`, any local CLI wrapper).
+- Parallel execution in `mode: "council"` or single worker execution in `mode: "single"`.
 
-- Node.js 20 or newer
-- Claude Code installed locally
-- Codex CLI installed and authenticated by the user
-- Gemini CLI installed and authenticated by the user
+## IDE And Agent Compatibility
 
-This project is designed for macOS and Linux first. It is also reasonable on Windows, but WSL is the recommended path when you want the most predictable CLI behavior across Codex, Gemini, and shell-based developer tooling.
+Yes, you can use this with Cursor and VS Code.
 
-## Legal And Trust Model
+- Claude Code: first-class plugin support in this repo.
+- VS Code: template in [`integrations/vscode/mcp.json`](./integrations/vscode/mcp.json).
+- Cursor: template in [`integrations/cursor/mcp.json`](./integrations/cursor/mcp.json).
+- Windsurf: template in [`integrations/windsurf/mcp_config.json`](./integrations/windsurf/mcp_config.json).
+- OpenClaw: dedicated loader guide in [`integrations/openclaw/README.md`](./integrations/openclaw/README.md).
+- Zed, Neovim, JetBrains: templates/guides in [`integrations/`](./integrations/README.md).
 
-Councilkit is compliance-first:
-
-- It does not implement OAuth/token scraping or auth replay.
-- It only invokes CLIs that users installed and authenticated.
-- It classifies adapters as official vs community/optional.
-
-See [LEGAL_COMPLIANCE.md](./LEGAL_COMPLIANCE.md) for policy details and source links.
-
-## Install
+## 60-Second Quickstart
 
 ```bash
 npm install
 npm run build
+npm run doctor
 ```
 
-### Configure Worker Commands
-
-Edit [`councilkit.settings.json`](./councilkit.settings.json) or create `~/.councilkit/config.json`.
-
-```json
-{
-  "codex_command": "codex",
-  "gemini_command": "gemini",
-  "local_command": null,
-  "default_workers": ["codex", "gemini"],
-  "timeouts": {
-    "codex_ms": 300000,
-    "gemini_ms": 300000,
-    "local_ms": 180000
-  },
-  "codex": {
-    "use_output_schema": true
-  },
-  "custom_workers": {
-    "antigravity": {
-      "command": "antigravity run \"{task}\"",
-      "timeout_ms": 300000,
-      "output_format": "auto"
-    },
-    "openclaw": {
-      "command": "openclaw \"{task}\"",
-      "timeout_ms": 300000,
-      "output_format": "auto"
-    }
-  },
-  "persistence": {
-    "enabled": true,
-    "directory": "~/.councilkit/runs"
-  }
-}
-```
-
-`local_command` is optional. If you set it, `local` can be included in the worker list. If the command contains `{task}`, councilkit substitutes the task into the command string; otherwise it appends the task as the final argument.
-
-`custom_workers` lets you register any additional CLI worker by name. Those names become valid values in `workers` for `council_run`.
-
-## Enable In Claude Code
-
-Use Claude Code dev mode with the plugin directory pointed at this repo:
+If doctor is clean, run:
 
 ```bash
 claude --plugin-dir ./councilkit
 ```
 
-Once enabled, Claude Code will discover:
+Then use:
 
-- [`.claude-plugin/plugin.json`](./.claude-plugin/plugin.json)
-- [`.mcp.json`](./.mcp.json)
-- [`skills/run/SKILL.md`](./skills/run/SKILL.md)
+```text
+/councilkit:run Implement feature X, have Codex propose code and Gemini review risks.
+```
 
-For other IDEs/hosts, use templates in [`integrations/`](./integrations/README.md).
+## Easy Setup For Cursor / VS Code
 
-The bundled MCP server starts with:
+Use the provided MCP templates and point them to this repo's server:
 
 ```json
 {
   "mcpServers": {
     "council-hub": {
       "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/dist/server.js"]
+      "args": ["/absolute/path/to/councilkit/dist/server.js"]
     }
   }
 }
 ```
 
-## Manual Server Run
+Templates:
 
-```bash
-npm start
+- VS Code: [`integrations/vscode/mcp.json`](./integrations/vscode/mcp.json)
+- Cursor: [`integrations/cursor/mcp.json`](./integrations/cursor/mcp.json)
+- Windsurf: [`integrations/windsurf/mcp_config.json`](./integrations/windsurf/mcp_config.json)
+- OpenClaw: [`integrations/openclaw/mcp-server-template.json`](./integrations/openclaw/mcp-server-template.json)
+
+### OpenClaw Special Path
+
+If you want OpenClaw specifically in the council, use either:
+
+1. OpenClaw as a worker in `custom_workers` (immediate support).
+2. Load `council-hub` as an MCP server in OpenClaw (if your OpenClaw host supports MCP server entries).
+
+Reference: [`integrations/openclaw/README.md`](./integrations/openclaw/README.md)
+
+## Worker Config (Subscription-First)
+
+Edit [`councilkit.settings.json`](./councilkit.settings.json) or `~/.councilkit/config.json`.
+
+```json
+{
+  "codex_command": "codex",
+  "gemini_command": "gemini",
+  "default_workers": ["codex", "gemini"],
+  "custom_workers": {
+    "antigravity": {
+      "command": "antigravity run \"{task}\"",
+      "output_format": "auto"
+    },
+    "openclaw": {
+      "command": "openclaw \"{task}\"",
+      "output_format": "auto"
+    }
+  }
+}
 ```
 
-Or:
+## `council_run` Contract
 
-```bash
-node ./dist/server.js
-```
-
-Or via the installed bin:
-
-```bash
-node ./bin/council-hub.js
-```
-
-## Tool Contract
-
-`council_run` accepts:
+Input:
 
 ```json
 {
@@ -157,119 +119,37 @@ node ./bin/council-hub.js
 }
 ```
 
-Defaults:
+Output includes:
 
-- `workers`: `["codex", "gemini"]`
-- `output_format`: `"json"`
+- `results`
+- `synthesis_inputs`
+- `disagreements`
+- `recommended_next_checks`
 
-The tool returns:
+## Security And Legal Positioning
 
-- `results`: one entry per worker with `status`, `stdout`, `stderr`, and `parsed_json_if_any`
-- `synthesis_inputs`: short structured summaries per worker
-- `disagreements`: heuristic statements describing where outputs diverge
-- `recommended_next_checks`: concrete verification suggestions
+- No credential harvesting.
+- No token scraping.
+- No fake or replayed OAuth flows.
+- Official CLIs are first-class; community tools are opt-in.
+- See [`LEGAL_COMPLIANCE.md`](./LEGAL_COMPLIANCE.md) for policy and references.
 
-## Worker Strategy
-
-### Codex
-
-The server tries:
-
-1. `codex exec --json --output-last-message --output-schema <temp-file> "<task>"`
-2. Falls back to `codex exec --json --output-last-message "<task>"` if the installed CLI rejects `--output-schema`
-
-### Gemini
-
-The server tries:
-
-1. `gemini -p "<task>" --output-format json`
-2. Falls back to `gemini -p "<task>"` if JSON output flags are unavailable
-
-### Custom Workers (Antigravity/OpenClaw/Any CLI)
-
-Define command templates in `custom_workers` and call them by worker name. If the command includes `{task}`, councilkit injects the task into that placeholder; otherwise it appends the task as the last argument.
-
-Example:
-
-```json
-{
-  "custom_workers": {
-    "antigravity": {
-      "command": "antigravity run \"{task}\"",
-      "output_format": "auto"
-    }
-  }
-}
-```
-
-## Security Model
-
-- No credential harvesting
-- No token scraping
-- No reverse-engineered auth flows
-- No direct API calls from councilkit code
-- Only official, already-authenticated local CLIs are invoked
-- Local run artifacts are written to disk; review your persistence directory if prompts may contain sensitive data
-- MCP tool outputs can still contain prompt-injected or untrusted content if the upstream CLI fetched it, so treat synthesis as untrusted until verified
-
-## IDE/Agent Coverage
-
-- Claude Code plugin support: included in-repo (`.claude-plugin`, `.mcp.json`, skill)
-- Cross-IDE templates: VS Code, Cursor, Windsurf, Zed, Neovim, JetBrains
-- Agent adapter registry: see [`agents/adapters.json`](./agents/adapters.json)
-- Additional tools such as Antigravity/OpenClaw: supported via `custom_workers` (opt-in)
-
-## Examples
-
-### Coding Task
-
-Prompt:
-
-```text
-/councilkit:run implement a CLI flag parser refactor and tell me where Codex and Gemini disagree
-```
-
-Expected outcome:
-
-- Codex proposes the implementation path
-- Gemini provides an alternative or highlights missing docs/tests
-- Claude synthesizes agreement points, disagreements, and final recommendation
-
-### Research Task
-
-Prompt:
-
-```text
-/councilkit:run compare two deployment strategies and identify what evidence would resolve the tradeoffs
-```
-
-Expected outcome:
-
-- Parallel worker outputs
-- A disagreement list
-- Suggested follow-up checks such as benchmarks, source verification, or design review
-
-## Testing
+## Commands
 
 ```bash
 npm test
 npm run build
+npm run doctor
+npm start
 ```
 
-The test suite uses mocked subprocess runners to verify orchestration logic, worker fallback behavior, and persistence.
+## Publishing Readiness
 
-## Marketplace Install
+- Plugin manifest: [`.claude-plugin/plugin.json`](./.claude-plugin/plugin.json)
+- MCP startup config: [`.mcp.json`](./.mcp.json)
+- Skill prompt: [`skills/run/SKILL.md`](./skills/run/SKILL.md)
+- CI: [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)
 
-Marketplace packaging is not published yet.
+## License
 
-- Placeholder: add marketplace install URL here
-- Placeholder: add versioned release notes here
-
-## Notes On Sources
-
-This implementation is aligned with current public docs on Claude Code MCP configuration and the MCP TypeScript SDK, plus the documented non-interactive/headless patterns in the Codex and Gemini CLI ecosystems:
-
-- Anthropic Claude Code MCP docs: https://docs.anthropic.com/en/docs/claude-code/mcp
-- MCP TypeScript SDK: https://github.com/modelcontextprotocol/typescript-sdk
-- OpenAI Codex repository: https://github.com/openai/codex
-- Gemini CLI repository: https://github.com/google-gemini/gemini-cli
+Apache-2.0. See [`LICENSE`](./LICENSE).

@@ -1,0 +1,9 @@
+{
+  "custom_workers": {
+    "openclaw": {
+      "command": "openclaw \"{task}\"",
+      "timeout_ms": 300000,
+      "output_format": "auto"
+    }
+  }
+}

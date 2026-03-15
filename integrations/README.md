@@ -13,10 +13,11 @@ This folder provides templates for IDE/agent hosts.
 - Claude Code (`official`): use root `.mcp.json` and plugin manifest.
 - VS Code (`community`): import `integrations/vscode/mcp.json` into your MCP extension config.
 - Cursor (`community`): import `integrations/cursor/mcp.json`.
-- Windsurf (`community`): import `integrations/windsurf/mcp.json`.
+- Windsurf (`community`): import `integrations/windsurf/mcp_config.json`.
 - Zed (`manual`): copy snippet from `integrations/zed/settings.json` into user settings.
 - Neovim (`manual`): see `integrations/neovim/README.md`.
 - JetBrains (`manual`): see `integrations/jetbrains/README.md`.
+- OpenClaw (`community`): see `integrations/openclaw/README.md`.
 
 ## Safety Note
 
