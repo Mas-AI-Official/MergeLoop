@@ -4,14 +4,15 @@
 
 **CouncilKit is a local orchestration layer for model CLIs.**
 
-Run Claude Code, Codex CLI, Gemini CLI, and optional community tools in parallel, then merge outputs into one structured result. No direct API calls are required in councilkit code.
+> [!IMPORTANT]
+> **Run Claude Code, Codex CLI, Gemini CLI, and optional community tools in parallel, then merge outputs into one structured result. No direct API calls are required in councilkit code.**
 
 ## Why This Is Useful
 
-- Use your existing subscriptions, not only API billing.
-- Split tasks across model strengths at the same time.
-- Keep one shared output format for agreement, disagreement, and next checks.
-- Keep data local by default with on-disk run logs.
+- **Use existing subscriptions**, not only API billing.
+- **Split tasks by model strength** at the same time.
+- **Get one shared output format** for agreement, disagreement, and next checks.
+- **Keep data local by default** with on-disk run logs.
 
 ## What It Can Actually Do Today
 
@@ -24,7 +25,8 @@ Run Claude Code, Codex CLI, Gemini CLI, and optional community tools in parallel
 
 ## IDE And Agent Compatibility
 
-Yes, you can use this with Cursor and VS Code.
+> [!TIP]
+> **Yes: you can use this with Cursor and VS Code.**
 
 - Claude Code: first-class plugin support in this repo.
 - VS Code: template in [`integrations/vscode/mcp.json`](./integrations/vscode/mcp.json).
@@ -34,6 +36,9 @@ Yes, you can use this with Cursor and VS Code.
 - Zed, Neovim, JetBrains: templates/guides in [`integrations/`](./integrations/README.md).
 
 ## 60-Second Quickstart
+
+> [!IMPORTANT]
+> **Fast path:** `npm install` -> `npm run build` -> `npm run doctor` -> `claude --plugin-dir ./councilkit`
 
 ```bash
 npm install
@@ -127,6 +132,9 @@ Output includes:
 - `recommended_next_checks`
 
 ## Security And Legal Positioning
+
+> [!WARNING]
+> **CouncilKit is orchestration, not auth bypass.** It does not scrape tokens or replay OAuth sessions.
 
 - No credential harvesting.
 - No token scraping.
