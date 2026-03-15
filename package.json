@@ -56,7 +56,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js",
-    "test": "tsx --test test/**/*.test.ts",
+    "test": "tsx --test test/*.test.ts",
     "setup": "node scripts/setup.mjs",
     "uninstall": "node scripts/uninstall.mjs",
     "doctor": "node scripts/doctor.mjs",
