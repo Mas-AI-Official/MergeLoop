@@ -1,0 +1,24 @@
+{
+  "active_host": "claude_code",
+  "hosts": {
+    "claude_code": {
+      "type": "mcp_host",
+      "enabled": true
+    }
+  },
+  "worker_registry": {
+    "codex": {
+      "type": "cli",
+      "enabled": true,
+      "command": "codex",
+      "priority": 10
+    }
+  },
+  "routing": {
+    "default_mode": "single",
+    "fallback_priority": [
+      "codex"
+    ],
+    "allow_single_worker": true
+  }
+}

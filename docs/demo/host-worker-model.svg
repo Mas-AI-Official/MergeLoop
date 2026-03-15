@@ -1,0 +1,30 @@
+<svg width="1400" height="860" viewBox="0 0 1400 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="860" fill="#0B1220"/>
+  <text x="70" y="90" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700">Host vs Worker Model</text>
+  <text x="70" y="132" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="26">Hosts call CouncilKit. Workers are called by CouncilKit.</text>
+
+  <rect x="70" y="180" width="390" height="240" rx="16" fill="#111827" stroke="#334155"/>
+  <text x="110" y="240" fill="#60A5FA" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Hosts</text>
+  <text x="110" y="288" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">- Claude Code</text>
+  <text x="110" y="324" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">- Generic MCP host</text>
+  <text x="110" y="360" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">- CLI host wrappers</text>
+
+  <rect x="505" y="180" width="390" height="240" rx="16" fill="#0F172A" stroke="#38BDF8"/>
+  <text x="553" y="254" fill="#E0F2FE" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700">CouncilKit Core</text>
+  <text x="552" y="300" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">orchestration + synthesis</text>
+  <text x="552" y="336" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">one merged answer/report</text>
+
+  <rect x="940" y="180" width="390" height="360" rx="16" fill="#111827" stroke="#334155"/>
+  <text x="980" y="240" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Workers</text>
+  <text x="980" y="288" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">- CLIWorkerAdapter (today)</text>
+  <text x="980" y="324" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">- MCPWorkerAdapter (documented)</text>
+  <text x="980" y="360" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">- APIWorkerAdapter (optional/future)</text>
+
+  <path d="M462 302H496" stroke="#93C5FD" stroke-width="5" stroke-linecap="round"/>
+  <path d="M902 302H934" stroke="#86EFAC" stroke-width="5" stroke-linecap="round"/>
+
+  <rect x="70" y="600" width="1260" height="190" rx="16" fill="#111827" stroke="#374151"/>
+  <text x="110" y="668" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="28">Host and worker are separate concepts.</text>
+  <text x="110" y="714" fill="#93C5FD" font-family="Consolas, Menlo, monospace" font-size="28">Main message: Bring your own host. Bring your own workers.</text>
+  <text x="110" y="758" fill="#34D399" font-family="Consolas, Menlo, monospace" font-size="28">Secondary: Use your subscriptions first. API optional.</text>
+</svg>

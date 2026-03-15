@@ -4,8 +4,9 @@ This folder contains launch/demo visuals:
 
 - `workflow.svg`
 - `social-card.svg`
+- `host-worker-model.svg`
+- `support-matrix.svg`
 - `output-example.svg`
-- `host-matrix.svg`
 - `storyboard/` frames and HTML page
 
 ## Regenerate Storyboard Frames

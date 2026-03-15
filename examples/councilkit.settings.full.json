@@ -1,4 +1,61 @@
 {
+  "active_host": "generic_mcp_host",
+  "hosts": {
+    "generic_mcp_host": {
+      "type": "mcp_host",
+      "enabled": true
+    },
+    "claude_code": {
+      "type": "mcp_host",
+      "enabled": true
+    },
+    "codex_cli": {
+      "type": "cli_host",
+      "enabled": true,
+      "command": "codex"
+    },
+    "gemini_cli": {
+      "type": "cli_host",
+      "enabled": true,
+      "command": "gemini"
+    }
+  },
+  "worker_registry": {
+    "codex": {
+      "type": "cli",
+      "enabled": true,
+      "command": "codex",
+      "priority": 10
+    },
+    "gemini": {
+      "type": "cli",
+      "enabled": true,
+      "command": "gemini",
+      "priority": 20
+    },
+    "openclaw": {
+      "type": "cli",
+      "enabled": true,
+      "command": "openclaw \"{task}\"",
+      "priority": 30,
+      "output_format": "auto"
+    },
+    "future_api_worker": {
+      "type": "api",
+      "enabled": false,
+      "endpoint": "https://example.invalid/api",
+      "model": "example-model"
+    }
+  },
+  "routing": {
+    "default_mode": "council",
+    "fallback_priority": [
+      "codex",
+      "gemini",
+      "openclaw"
+    ],
+    "allow_single_worker": true
+  },
   "codex_command": "codex",
   "gemini_command": "gemini",
   "local_command": null,

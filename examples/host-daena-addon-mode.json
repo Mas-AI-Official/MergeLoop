@@ -1,0 +1,40 @@
+{
+  "active_host": "daena",
+  "hosts": {
+    "daena": {
+      "type": "mcp_host",
+      "enabled": true,
+      "notes": "Daena calls council-hub as orchestration middleware."
+    }
+  },
+  "worker_registry": {
+    "codex": {
+      "type": "cli",
+      "enabled": true,
+      "command": "codex",
+      "priority": 10
+    },
+    "gemini": {
+      "type": "cli",
+      "enabled": true,
+      "command": "gemini",
+      "priority": 20
+    },
+    "local": {
+      "type": "cli",
+      "enabled": true,
+      "command": "python local_worker.py \"{task}\"",
+      "priority": 30,
+      "output_format": "auto"
+    }
+  },
+  "routing": {
+    "default_mode": "council",
+    "fallback_priority": [
+      "codex",
+      "gemini",
+      "local"
+    ],
+    "allow_single_worker": true
+  }
+}

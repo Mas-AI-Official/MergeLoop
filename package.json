@@ -1,10 +1,12 @@
 {
   "name": "councilkit",
   "version": "0.1.0",
-  "description": "MCP-native model council orchestration for Claude Code, Codex, Gemini, and local workers. Use subscriptions first, API optional.",
+  "description": "Host-agnostic model council runtime across MCP and CLI workers, with optional future API adapters. Use subscriptions first, API optional.",
   "keywords": [
     "mcp",
     "model-context-protocol",
+    "host-agnostic",
+    "runtime",
     "claude-code",
     "codex",
     "gemini",

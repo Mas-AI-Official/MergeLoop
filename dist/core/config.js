@@ -2,6 +2,51 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { normalizePath } from "./path-utils.js";
 const DEFAULT_SETTINGS = {
+    active_host: "claude_code",
+    hosts: {
+        claude_code: {
+            type: "mcp_host",
+            enabled: true,
+            notes: "First-class plugin path in this repository."
+        },
+        codex_cli: {
+            type: "cli_host",
+            enabled: true,
+            command: "codex"
+        },
+        gemini_cli: {
+            type: "cli_host",
+            enabled: true,
+            command: "gemini"
+        }
+    },
+    worker_registry: {
+        codex: {
+            type: "cli",
+            enabled: true,
+            command: "codex",
+            priority: 10,
+            output_format: "json"
+        },
+        gemini: {
+            type: "cli",
+            enabled: true,
+            command: "gemini",
+            priority: 20,
+            output_format: "json"
+        },
+        local: {
+            type: "cli",
+            enabled: false,
+            priority: 90,
+            output_format: "auto"
+        }
+    },
+    routing: {
+        default_mode: "council",
+        fallback_priority: ["codex", "gemini"],
+        allow_single_worker: true
+    },
     codex_command: "codex",
     gemini_command: "gemini",
     local_command: null,
@@ -52,6 +97,59 @@ async function readJsonConfig(configPath) {
     }
     return parsed;
 }
+function normalizeRuntimeSettings(settings) {
+    const normalized = {
+        ...settings,
+        custom_workers: { ...(settings.custom_workers ?? {}) }
+    };
+    const registry = settings.worker_registry ?? {};
+    const priorityPairs = [];
+    for (const [name, worker] of Object.entries(registry)) {
+        if (!worker || worker.enabled === false) {
+            continue;
+        }
+        priorityPairs.push({
+            name,
+            priority: worker.priority ?? 100
+        });
+        if (worker.type !== "cli") {
+            continue;
+        }
+        const cliCommand = worker.command?.trim();
+        if (!cliCommand) {
+            continue;
+        }
+        if (name === "codex") {
+            normalized.codex_command = cliCommand;
+            continue;
+        }
+        if (name === "gemini") {
+            normalized.gemini_command = cliCommand;
+            continue;
+        }
+        if (name === "local") {
+            normalized.local_command = cliCommand;
+            continue;
+        }
+        normalized.custom_workers ??= {};
+        normalized.custom_workers[name] = {
+            command: cliCommand,
+            timeout_ms: worker.timeout_ms,
+            output_format: worker.output_format ?? "auto"
+        };
+    }
+    const fallbackPriority = normalized.routing?.fallback_priority ?? [];
+    if (fallbackPriority.length > 0) {
+        normalized.default_workers = [...new Set(fallbackPriority)];
+        return normalized;
+    }
+    if (priorityPairs.length > 0) {
+        normalized.default_workers = priorityPairs
+            .sort((left, right) => left.priority - right.priority)
+            .map((entry) => entry.name);
+    }
+    return normalized;
+}
 export async function loadSettings(cwd = process.cwd()) {
     const candidatePaths = [
         process.env.COUNCILKIT_CONFIG,
@@ -61,8 +159,9 @@ export async function loadSettings(cwd = process.cwd()) {
     for (const candidate of candidatePaths) {
         try {
             const config = await readJsonConfig(candidate);
+            const merged = mergeSettings(DEFAULT_SETTINGS, config);
             return {
-                settings: mergeSettings(DEFAULT_SETTINGS, config),
+                settings: normalizeRuntimeSettings(merged),
                 configPath: candidate
             };
         }
@@ -75,7 +174,7 @@ export async function loadSettings(cwd = process.cwd()) {
         }
     }
     return {
-        settings: DEFAULT_SETTINGS
+        settings: normalizeRuntimeSettings(DEFAULT_SETTINGS)
     };
 }
 //# sourceMappingURL=config.js.map

@@ -7,10 +7,11 @@
   </defs>
   <rect width="1600" height="840" fill="url(#bg)"/>
   <rect x="72" y="72" width="1456" height="696" rx="28" fill="#0F172A" stroke="#334155"/>
-  <text x="140" y="240" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="88" font-weight="700">councilkit</text>
+  <text x="140" y="240" fill="#2563EB" font-family="Segoe UI, Arial, sans-serif" font-size="88" font-weight="800">Council</text>
+  <text x="503" y="240" fill="#10B981" font-family="Segoe UI, Arial, sans-serif" font-size="88" font-weight="800">Kit</text>
   <text x="140" y="320" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="600">One prompt. Many models. One answer.</text>
   <text x="140" y="395" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="700">Use your subscriptions first. API optional.</text>
   <rect x="140" y="465" width="1320" height="210" rx="18" fill="#111827" stroke="#1F2937"/>
-  <text x="188" y="542" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="34">Claude Code  ->  Council Hub  ->  Codex / Gemini / Local</text>
-  <text x="188" y="600" fill="#A7F3D0" font-family="Consolas, Menlo, monospace" font-size="34">results + synthesis + disagreements + next checks</text>
+  <text x="188" y="542" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="34">Any Host  ->  CouncilKit Core  ->  MCP / CLI / API workers</text>
+  <text x="188" y="600" fill="#A7F3D0" font-family="Consolas, Menlo, monospace" font-size="34">one merged answer: agreements + disagreements + next checks</text>
 </svg>

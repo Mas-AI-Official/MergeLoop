@@ -1,4 +1,78 @@
 {
+  "active_host": "claude_code",
+  "hosts": {
+    "claude_code": {
+      "type": "mcp_host",
+      "enabled": true,
+      "notes": "First-class path in this repository."
+    },
+    "codex_cli": {
+      "type": "cli_host",
+      "enabled": true,
+      "command": "codex"
+    },
+    "gemini_cli": {
+      "type": "cli_host",
+      "enabled": true,
+      "command": "gemini"
+    },
+    "generic_mcp_host": {
+      "type": "mcp_host",
+      "enabled": true
+    }
+  },
+  "worker_registry": {
+    "codex": {
+      "type": "cli",
+      "enabled": true,
+      "command": "codex",
+      "priority": 10,
+      "output_format": "json"
+    },
+    "gemini": {
+      "type": "cli",
+      "enabled": true,
+      "command": "gemini",
+      "priority": 20,
+      "output_format": "json"
+    },
+    "local": {
+      "type": "cli",
+      "enabled": false,
+      "priority": 90
+    },
+    "openclaw": {
+      "type": "cli",
+      "enabled": false,
+      "command": "openclaw \"{task}\"",
+      "priority": 40,
+      "output_format": "auto",
+      "notes": "Community path"
+    },
+    "antigravity": {
+      "type": "cli",
+      "enabled": false,
+      "command": "antigravity run \"{task}\"",
+      "priority": 50,
+      "output_format": "auto",
+      "notes": "Experimental path"
+    },
+    "future_api_worker": {
+      "type": "api",
+      "enabled": false,
+      "endpoint": "https://example.invalid/api",
+      "model": "example-model",
+      "notes": "Planned, not active in current runtime"
+    }
+  },
+  "routing": {
+    "default_mode": "council",
+    "fallback_priority": [
+      "codex",
+      "gemini"
+    ],
+    "allow_single_worker": true
+  },
   "codex_command": "codex",
   "gemini_command": "gemini",
   "local_command": null,
@@ -14,18 +88,7 @@
   "codex": {
     "use_output_schema": true
   },
-  "custom_workers": {
-    "antigravity": {
-      "command": "antigravity run \"{task}\"",
-      "timeout_ms": 300000,
-      "output_format": "auto"
-    },
-    "openclaw": {
-      "command": "openclaw \"{task}\"",
-      "timeout_ms": 300000,
-      "output_format": "auto"
-    }
-  },
+  "custom_workers": {},
   "persistence": {
     "enabled": true,
     "directory": "~/.councilkit/runs"

@@ -1,7 +1,9 @@
-# README Hero Copy
+# Hero Copy
 
-**One prompt. Many models. One answer.**
+## One prompt. Many models. One answer.
 
-CouncilKit is an MCP-native model council for Claude Code, Codex, Gemini, and local workers.
+CouncilKit is a host-agnostic model council that routes work across MCP, CLI, and optional API workers, then returns one unified answer.
 
-**Use your subscriptions first. API optional.**
+Bring your own host. Bring your own workers.
+
+Use your subscriptions first. API optional.

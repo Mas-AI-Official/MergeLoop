@@ -1,8 +1,10 @@
-CouncilKit can now be used as a Daena add-on.
+CouncilKit now supports a Daena add-on mode.
 
-Use it as a council execution backend:
-- route complex tasks to `mode: "council"`
-- collect structured disagreements
-- feed `recommended_next_checks` into Daena validation loops
+Daena can call CouncilKit as a host path and treat CouncilKit as orchestration middleware:
+- dispatch to selected workers
+- collect disagreements
+- run verification loops from recommended checks
 
-Positioning stays clear: subscriptions first, API optional, local-first orchestration.
+Message:
+Bring your own host. Bring your own workers.
+Use subscriptions first. API optional.

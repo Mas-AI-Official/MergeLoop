@@ -1,0 +1,25 @@
+{
+  "active_host": "generic_mcp_host",
+  "hosts": {
+    "generic_mcp_host": {
+      "type": "mcp_host",
+      "enabled": true
+    }
+  },
+  "worker_registry": {
+    "local": {
+      "type": "cli",
+      "enabled": true,
+      "command": "ollama run llama3 \"{task}\"",
+      "priority": 10,
+      "output_format": "auto"
+    }
+  },
+  "routing": {
+    "default_mode": "single",
+    "fallback_priority": [
+      "local"
+    ],
+    "allow_single_worker": true
+  }
+}

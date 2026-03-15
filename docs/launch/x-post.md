@@ -1,10 +1,12 @@
-CouncilKit is live.
+CouncilKit launch:
 
 One prompt. Many models. One answer.
 
-MCP-native orchestration for Claude Code + Codex + Gemini + local workers.
-Use your subscriptions first. API optional.
+Bring your own host. Bring your own workers.
+Use the AI subscriptions you already pay for, together.
 
-Local-first, explicit disagreement signals, and verification-first outputs.
+CouncilKit turns MCP + CLI tools into one model council with explicit disagreement signals and next checks.
 
-Repo: https://github.com/Mas-AI-Official/councilkit
+Host-agnostic. Local-first. API optional.
+
+https://github.com/Mas-AI-Official/councilkit

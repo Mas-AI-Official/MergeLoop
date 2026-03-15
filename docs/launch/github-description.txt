@@ -1,1 +1,1 @@
-MCP-native model council orchestration for Claude Code, Codex, Gemini, and local workers. Use your subscriptions first, API optional.
+Host-agnostic model council runtime across MCP and CLI workers. Bring your own host, bring your own workers. Use subscriptions first, API optional.

@@ -1,26 +1,26 @@
 # Launch Guide
 
-This repo is optimized for a trust-first launch.
+## Core Positioning
 
-## Positioning
-
-- One prompt. Many models. One answer.
+- Bring your own host. Bring your own workers.
+- Use the AI subscriptions you already pay for, together.
+- CouncilKit turns MCP and CLI tools into one model council.
 - Use your subscriptions first. API optional.
-- MCP-native orchestration, local-first runtime.
 
-## Key Proof Points
+## Launch Proof Checklist
 
-- `npm ci` + `npm test` + `npm run build` + `npm run smoke`
-- Clear host matrix (official/community/manual)
-- Security and legal boundaries documented
-- Demo visuals and storyboard assets in `docs/demo/`
+- README communicates host-vs-worker model in under 30 seconds.
+- Support levels are explicit: first-class, documented/manual, experimental, planned.
+- Security/legal constraints are clear and non-hyped.
+- Demo visuals show routing and unified output.
+- Validation commands are documented and reproducible.
 
 ## Launch Channels
 
-- GitHub repo README + social card
-- X/Twitter launch post
-- Hacker News technical launch
-- Reddit intro with concise setup steps
+- GitHub repository
+- X/Twitter
+- Hacker News
+- Reddit
 - Daena integration announcement
 
-See ready copy in [`docs/launch/`](./launch/).
+Ready copy is in [`docs/launch/`](./launch/).

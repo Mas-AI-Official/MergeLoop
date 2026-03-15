@@ -1,0 +1,25 @@
+{
+  "active_host": "codex_cli",
+  "hosts": {
+    "codex_cli": {
+      "type": "cli_host",
+      "enabled": true,
+      "command": "codex"
+    }
+  },
+  "worker_registry": {
+    "gemini": {
+      "type": "cli",
+      "enabled": true,
+      "command": "gemini",
+      "priority": 10
+    }
+  },
+  "routing": {
+    "default_mode": "single",
+    "fallback_priority": [
+      "gemini"
+    ],
+    "allow_single_worker": true
+  }
+}

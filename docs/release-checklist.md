@@ -12,12 +12,10 @@
 
 ## Integration Checks
 
-- [ ] Claude Code path verified
-- [ ] VS Code template link verified
-- [ ] Cursor template link verified
-- [ ] Windsurf template link verified
-- [ ] OpenClaw docs/template links verified
-- [ ] Manual integration docs (Zed/Neovim/JetBrains) link-check
+- [ ] first-class paths verified
+- [ ] documented/manual templates link-check
+- [ ] experimental paths labeled clearly
+- [ ] planned paths not overclaimed
 
 ## Demo And Docs
 

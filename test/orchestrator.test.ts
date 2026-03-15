@@ -237,3 +237,50 @@ test("custom workers can be configured and selected", async () => {
   assert.equal(result.results[0]?.worker_name, "antigravity");
   assert.equal(runner.calls[0]?.executable, "agx");
 });
+
+test("worker_registry maps CLI workers into runtime selection order", async () => {
+  const cwd = await createFixture({
+    worker_registry: {
+      gemx: {
+        type: "cli",
+        enabled: true,
+        command: "gemx-cli \"{task}\"",
+        priority: 5,
+        output_format: "json"
+      }
+    },
+    routing: {
+      default_mode: "single",
+      fallback_priority: ["gemx"],
+      allow_single_worker: true
+    },
+    persistence: {
+      enabled: false,
+      directory: "~/.councilkit/runs"
+    }
+  });
+
+  const runner = new FakeRunner((spec) =>
+    success(
+      spec,
+      JSON.stringify({
+        summary: "Registry worker selected.",
+        key_points: ["worker_registry was parsed"],
+        risks: [],
+        citations_needed: []
+      })
+    )
+  );
+
+  const orchestrator = new CouncilOrchestrator(runner);
+  const result = await orchestrator.run(
+    {
+      task: "Registry selection",
+      mode: "single"
+    },
+    cwd
+  );
+
+  assert.equal(result.results[0]?.worker_name, "gemx");
+  assert.equal(runner.calls[0]?.executable, "gemx-cli");
+});

@@ -47,8 +47,10 @@ async function readSettings(cwd) {
 
   return {
     settings: {
+      active_host: "claude_code",
       codex_command: "codex",
       gemini_command: "gemini",
+      worker_registry: {},
       custom_workers: {}
     },
     path: "(default)"
@@ -89,6 +91,14 @@ async function main() {
     }
   ];
 
+  if (typeof settings.active_host === "string" && settings.active_host.trim()) {
+    checks.push({
+      name: "active host selected",
+      ok: true,
+      detail: settings.active_host
+    });
+  }
+
   const customWorkers = settings.custom_workers ?? {};
   for (const [name, config] of Object.entries(customWorkers)) {
     const executable = firstExecutable(config?.command ?? "");
@@ -103,6 +113,29 @@ async function main() {
 
     checks.push({
       name: `custom worker: ${name}`,
+      ok: await commandExists(executable),
+      detail: executable
+    });
+  }
+
+  const workerRegistry = settings.worker_registry ?? {};
+  for (const [name, config] of Object.entries(workerRegistry)) {
+    if (!config || config.enabled === false || config.type !== "cli") {
+      continue;
+    }
+
+    const executable = firstExecutable(config.command ?? "");
+    if (!executable) {
+      checks.push({
+        name: `registry worker: ${name}`,
+        ok: false,
+        detail: "empty command"
+      });
+      continue;
+    }
+
+    checks.push({
+      name: `registry worker: ${name}`,
       ok: await commandExists(executable),
       detail: executable
     });

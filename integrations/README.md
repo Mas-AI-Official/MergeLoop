@@ -1,30 +1,28 @@
-# Integrations Matrix
+# Integrations
 
-This folder provides templates for IDE/agent hosts.
+CouncilKit is host-agnostic, but integration paths have different support levels.
 
-CouncilKit does **not** claim universal official support across all IDEs/agents. This matrix documents the support level of integration assets that exist in this repo.
+## Support Levels
 
-## Status Legend
+- `first-class`: maintained and tested in this repo
+- `documented/manual`: templates/docs provided, host behavior depends on user setup
+- `experimental`: optional path with partial validation
+- `planned`: not implemented in this repo yet
 
-- `official`: maintained by vendor docs + stable path.
-- `community`: works in practice but not guaranteed by the vendor.
-- `manual`: no official template format; use wrapper script/command examples.
+## Matrix
 
-## IDE And Agent Hosts
+- Claude Code plugin bundle: `first-class`
+- VS Code template: `documented/manual`
+- Cursor template: `documented/manual`
+- Windsurf template: `documented/manual`
+- OpenClaw templates: `documented/manual`
+- Zed/Neovim/JetBrains guides: `documented/manual`
+- Antigravity path: `experimental`
+- Perplexity path: `planned`
 
-- Claude Code (`official in this repo`): use root `.mcp.json` and plugin manifest.
-- VS Code (`community`): import `integrations/vscode/mcp.json` into your MCP extension config.
-- Cursor (`community`): import `integrations/cursor/mcp.json`.
-- Windsurf (`community`): import `integrations/windsurf/mcp_config.json`.
-- Zed (`manual`): copy snippet from `integrations/zed/settings.json` into user settings.
-- Neovim (`manual`): see `integrations/neovim/README.md`.
-- JetBrains (`manual`): see `integrations/jetbrains/README.md`.
-- OpenClaw (`community`): see `integrations/openclaw/README.md`.
+Visual:
+- [`../docs/demo/support-matrix.svg`](../docs/demo/support-matrix.svg)
 
-## Visual Matrix
+## Safety Reminder
 
-See [`../docs/demo/host-matrix.svg`](../docs/demo/host-matrix.svg).
-
-## Safety Note
-
-Templates only start the local `council-hub` server. Worker auth remains in each vendor CLI.
+Templates only configure CouncilKit as an MCP server path. Worker authentication and usage limits remain controlled by each worker tool.

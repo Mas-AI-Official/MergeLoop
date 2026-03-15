@@ -1,86 +1,89 @@
 # Quickstart
 
-CouncilKit is local-first and subscription-first orchestration.
+CouncilKit is a host-agnostic orchestration runtime.
 
-- **Local-first:** run Council Hub on your machine.
-- **Subscription-first:** use worker CLIs you already installed/authenticated.
-- **API optional:** API workers can be added later, but are not required for core use.
+- Bring your own host.
+- Bring your own workers.
+- Use subscriptions first, API optional.
 
 ## Prerequisites
 
 - Node.js 20+
-- Installed host/editor with MCP client path (Claude Code first-class, others via templates/manual)
-- Installed worker CLIs you plan to use (`codex`, `gemini`, local/community workers)
-- Worker authentication done in each CLI separately
+- One host path (Claude plugin path or any MCP-capable host)
+- Worker CLIs installed/authenticated as needed (`codex`, `gemini`, local/community workers)
 
 ## Install
 
 ```bash
 npm ci
+npm test
 npm run build
 npm run smoke
 ```
 
-Run environment checks:
+Environment checks:
 
 ```bash
 npm run doctor
 ```
 
-`doctor` fails if expected worker CLIs are missing. This is expected behavior.
+`doctor` reports missing external CLIs when not installed. That is expected.
 
-## Start With Claude Code
+## Host Setup
+
+### Claude Code (first-class in this repo)
 
 ```bash
 claude --plugin-dir ./councilkit
 ```
 
-Then run `/councilkit:run`.
+### Generic MCP host
 
-## Add A Custom Worker
+Register:
 
-Edit `councilkit.settings.json`:
+- command: `node`
+- args: `/absolute/path/to/councilkit/dist/server.js`
+
+## Worker Setup
+
+`worker_registry` supports worker type labeling:
+
+- `cli` (active today)
+- `mcp` (documented pattern)
+- `api` (optional/future path)
+
+Example:
 
 ```json
 {
-  "custom_workers": {
-    "my_worker": {
-      "command": "my-worker-cli \"{task}\"",
-      "timeout_ms": 300000,
-      "output_format": "auto"
+  "worker_registry": {
+    "gemini": {
+      "type": "cli",
+      "enabled": true,
+      "command": "gemini",
+      "priority": 20
     }
+  },
+  "routing": {
+    "default_mode": "council",
+    "fallback_priority": ["gemini"],
+    "allow_single_worker": true
   }
 }
 ```
 
-Use:
+## Fallback Behavior
 
-```json
-{
-  "task": "Do the task",
-  "mode": "council",
-  "workers": ["codex", "my_worker"]
-}
-```
+- `routing.fallback_priority` controls worker order.
+- Built-in CLI workers keep backward compatibility with existing config fields.
+- Unsupported or unavailable workers are returned as explicit error entries.
 
-## Worker Fallback Behavior
+## Daena Add-On Mode
 
-- Codex worker retries without `--output-schema` if unsupported.
-- Gemini worker retries plain-text path if JSON output flags are unsupported.
-- Unsupported workers return explicit error entries in `results`.
+1. Daena host path invokes `council_run`.
+2. CouncilKit executes selected workers.
+3. Daena consumes `disagreements` and `recommended_next_checks` for follow-up.
 
-## Check Worker Availability
-
-1. Run `npm run doctor`.
-2. Verify the worker executable is in `PATH`.
-3. Verify CLI authentication in that worker's own login flow.
-
-## Use As A Daena Add-On
-
-CouncilKit can run as a Daena tool adapter:
-
-1. Start `council-hub` from Daena's tool layer.
-2. Route high-stakes tasks to `mode: "council"`.
-3. Use `disagreements` and `recommended_next_checks` to drive Daena verification loops.
-
-See example: [`examples/daena-addon.md`](../examples/daena-addon.md).
+Reference:
+- [`../examples/host-daena-addon-mode.json`](../examples/host-daena-addon-mode.json)
+- [`../examples/daena-addon.md`](../examples/daena-addon.md)

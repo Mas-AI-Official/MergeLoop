@@ -1,23 +1,24 @@
 # Suggested HN Title
 
-Show HN: CouncilKit - MCP-native model council using subscription CLIs first
+Show HN: CouncilKit - Host-agnostic model council over MCP and CLI workers
 
 # Suggested HN Body
 
-Built CouncilKit as a local-first orchestration layer for model CLIs.
+CouncilKit is an orchestration middle layer between hosts and workers.
 
-It runs workers (Codex/Gemini/local/custom) in parallel and returns one structured result with:
-- agreement signals
+Host and worker are separate:
+- Host = user entrypoint (Claude Code, generic MCP host, wrappers)
+- Worker = execution target (CLI today, MCP/API patterns documented)
+
+CouncilKit returns one merged output:
+- worker results
+- synthesis inputs
 - disagreements
 - recommended next checks
 
-Positioning: use the subscriptions/CLIs you already have, API optional.
+Positioning is subscription-first and local-first:
+- bring your own host
+- bring your own workers
+- API optional, not required
 
-Technical details:
-- TypeScript MCP stdio server
-- Claude Code plugin packaging
-- configurable worker adapters
-- local persistence
-- smoke tests and launch docs
-
-Would value feedback on host integrations and worker adapter ergonomics.
+Would appreciate feedback on adapter ergonomics and support-level clarity.

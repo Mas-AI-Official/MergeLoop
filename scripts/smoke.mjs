@@ -10,6 +10,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(path.join(__dirname, ".."));
 const distServerPath = path.join(root, "dist", "server.js");
 const fakeWorkerPath = path.join(root, "scripts", "fake-worker.mjs");
+const requiredDemoAssets = [
+  "docs/demo/workflow.svg",
+  "docs/demo/host-worker-model.svg",
+  "docs/demo/support-matrix.svg",
+  "docs/demo/output-example.svg",
+  "docs/demo/social-card.svg"
+];
 
 function run(command, args, options = {}) {
   return new Promise((resolve, reject) => {
@@ -96,15 +103,27 @@ async function runSyntheticCouncilRequest() {
   const quotedWorker = fakeWorkerPath.replaceAll("\\", "/");
 
   const config = {
-    codex_command: "codex",
-    gemini_command: "gemini",
-    default_workers: ["smoke_local"],
-    custom_workers: {
+    active_host: "generic_mcp_host",
+    hosts: {
+      generic_mcp_host: {
+        type: "mcp_host",
+        enabled: true
+      }
+    },
+    worker_registry: {
       smoke_local: {
+        type: "cli",
+        enabled: true,
         command: `node "${quotedWorker}" "{task}"`,
         timeout_ms: 30_000,
-        output_format: "json"
+        output_format: "json",
+        priority: 1
       }
+    },
+    routing: {
+      default_mode: "single",
+      fallback_priority: ["smoke_local"],
+      allow_single_worker: true
     },
     persistence: {
       enabled: false,
@@ -134,6 +153,10 @@ async function runSyntheticCouncilRequest() {
     if (result.results[0]?.status !== "success") {
       throw new Error(`Synthetic council request failed: ${JSON.stringify(result.results[0])}`);
     }
+
+    if (result.results[0]?.worker_name !== "smoke_local") {
+      throw new Error("Worker registration mapping failed for smoke_local.");
+    }
   } finally {
     if (previousConfig === undefined) {
       delete process.env.COUNCILKIT_CONFIG;
@@ -144,9 +167,21 @@ async function runSyntheticCouncilRequest() {
   }
 }
 
+async function verifyDemoAssets() {
+  for (const relativePath of requiredDemoAssets) {
+    const absolutePath = path.join(root, relativePath);
+    try {
+      await fs.access(absolutePath);
+    } catch {
+      throw new Error(`Required demo asset is missing: ${relativePath}`);
+    }
+  }
+}
+
 async function main() {
   assertNodeVersion();
   await ensureBuildArtifacts();
+  await verifyDemoAssets();
   await verifyServerEntrypoint();
   await runSyntheticCouncilRequest();
   process.stdout.write("Smoke check passed.\n");

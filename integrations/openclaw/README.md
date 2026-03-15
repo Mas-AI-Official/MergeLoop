@@ -1,5 +1,7 @@
 # OpenClaw Integration
 
+Support level: `documented/manual`.
+
 This repo supports OpenClaw in two practical ways.
 
 ## 1) Use OpenClaw As A Worker In CouncilKit (Supported Now)
@@ -28,7 +30,7 @@ Then call:
 }
 ```
 
-## 2) Load CouncilKit Server From OpenClaw (Community Path)
+## 2) Load CouncilKit Server From OpenClaw (documented/manual path)
 
 If your OpenClaw setup supports MCP server entries, point it to:
 

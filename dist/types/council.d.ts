@@ -2,6 +2,8 @@ export type CouncilMode = "single" | "council";
 export type OutputFormat = "markdown" | "json";
 export type WorkerName = "codex" | "gemini" | "local";
 export type WorkerStatus = "success" | "error" | "timeout" | "skipped";
+export type WorkerAdapterType = "cli" | "mcp" | "api";
+export type HostAdapterType = "mcp_host" | "cli_host" | "api_host";
 export interface CouncilRunInput {
     task: string;
     mode: CouncilMode;
@@ -47,6 +49,31 @@ export interface CouncilRunOutput {
     metadata: CouncilRunMetadata;
 }
 export interface CouncilKitSettings {
+    active_host?: string;
+    hosts?: Record<string, {
+        type: HostAdapterType;
+        command?: string;
+        args?: string[];
+        notes?: string;
+        enabled?: boolean;
+    }>;
+    worker_registry?: Record<string, {
+        type: WorkerAdapterType;
+        command?: string;
+        args?: string[];
+        timeout_ms?: number;
+        output_format?: "auto" | "json" | "text";
+        endpoint?: string;
+        model?: string;
+        enabled?: boolean;
+        priority?: number;
+        notes?: string;
+    }>;
+    routing?: {
+        default_mode?: CouncilMode;
+        fallback_priority?: string[];
+        allow_single_worker?: boolean;
+    };
     codex_command: string;
     gemini_command: string;
     local_command?: string | null;

@@ -1,20 +1,21 @@
 <svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1600" height="900" fill="#0B1220"/>
   <text x="80" y="90" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="700">CouncilKit Workflow</text>
-  <text x="80" y="138" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="28">Claude Code -> Council Hub -> workers -> unified answer</text>
+  <text x="80" y="138" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="28">Host -> CouncilKit Core -> workers -> unified answer</text>
 
   <rect x="80" y="220" width="300" height="140" rx="18" fill="#111827" stroke="#334155"/>
-  <text x="130" y="300" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Claude Code</text>
+  <text x="170" y="300" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Host</text>
 
   <rect x="520" y="220" width="340" height="140" rx="18" fill="#0F172A" stroke="#38BDF8"/>
-  <text x="593" y="300" fill="#E0F2FE" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Council Hub</text>
+  <text x="564" y="286" fill="#E0F2FE" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">CouncilKit</text>
+  <text x="610" y="320" fill="#E0F2FE" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Core</text>
 
   <rect x="1010" y="140" width="250" height="110" rx="14" fill="#111827" stroke="#475569"/>
-  <text x="1098" y="205" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="30">Codex</text>
+  <text x="1088" y="205" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="30">Worker A</text>
   <rect x="1010" y="290" width="250" height="110" rx="14" fill="#111827" stroke="#475569"/>
-  <text x="1086" y="355" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="30">Gemini</text>
+  <text x="1088" y="355" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="30">Worker B</text>
   <rect x="1010" y="440" width="250" height="110" rx="14" fill="#111827" stroke="#475569"/>
-  <text x="1054" y="505" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="30">Local Worker</text>
+  <text x="1088" y="505" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="30">Worker C</text>
 
   <rect x="1340" y="260" width="210" height="170" rx="14" fill="#0F172A" stroke="#34D399"/>
   <text x="1375" y="330" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Unified</text>
@@ -31,5 +32,5 @@
   <rect x="80" y="620" width="1470" height="200" rx="18" fill="#111827" stroke="#374151"/>
   <text x="120" y="685" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="28">Input: task + mode + workers</text>
   <text x="120" y="730" fill="#93C5FD" font-family="Consolas, Menlo, monospace" font-size="28">Output: results + synthesis_inputs + disagreements + recommended_next_checks</text>
-  <text x="120" y="775" fill="#34D399" font-family="Consolas, Menlo, monospace" font-size="28">Positioning: Use your subscriptions first. API optional.</text>
+  <text x="120" y="775" fill="#34D399" font-family="Consolas, Menlo, monospace" font-size="28">Bring your own host. Bring your own workers.</text>
 </svg>

@@ -1,12 +1,12 @@
 <svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1280" height="720" fill="#0B1020"/>
   <rect x="48" y="48" width="1184" height="624" rx="22" fill="#111A33"/>
-  <text x="86" y="118" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="700">Parallel Workers</text>
+  <text x="86" y="118" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="700">Claude host + Codex/Gemini workers</text>
   <text x="86" y="176" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="26">Step 2 of 3</text>
-  <text x="86" y="250" fill="#D1D5DB" font-family="Segoe UI, Arial, sans-serif" font-size="30">Codex, Gemini, and local workers run in parallel.</text>
+  <text x="86" y="250" fill="#D1D5DB" font-family="Segoe UI, Arial, sans-serif" font-size="30">Claude-hosted flow dispatches two workers in council mode.</text>
   <rect x="86" y="300" width="1110" height="280" rx="16" fill="#0F172A" stroke="#334155"/>
   <text x="120" y="360" fill="#34D399" font-family="Consolas, Menlo, monospace" font-size="24">/councilkit:run Task prompt</text>
-  <text x="120" y="408" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="21">workers: codex, gemini, local</text>
+  <text x="120" y="408" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="21">workers: codex, gemini</text>
   <text x="120" y="454" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="21">mode: council</text>
   <text x="120" y="500" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="21">output: agreements, disagreements, next checks</text>
 </svg>
