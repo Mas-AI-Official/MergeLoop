@@ -1,0 +1,6 @@
+{
+  "task": "Review this migration strategy and list risk checks.",
+  "mode": "council",
+  "workers": ["codex", "gemini"],
+  "output_format": "json"
+}

@@ -2,6 +2,8 @@
 
 This folder provides templates for IDE/agent hosts.
 
+CouncilKit does **not** claim universal official support across all IDEs/agents. This matrix documents the support level of integration assets that exist in this repo.
+
 ## Status Legend
 
 - `official`: maintained by vendor docs + stable path.
@@ -10,7 +12,7 @@ This folder provides templates for IDE/agent hosts.
 
 ## IDE And Agent Hosts
 
-- Claude Code (`official`): use root `.mcp.json` and plugin manifest.
+- Claude Code (`official in this repo`): use root `.mcp.json` and plugin manifest.
 - VS Code (`community`): import `integrations/vscode/mcp.json` into your MCP extension config.
 - Cursor (`community`): import `integrations/cursor/mcp.json`.
 - Windsurf (`community`): import `integrations/windsurf/mcp_config.json`.
@@ -18,6 +20,10 @@ This folder provides templates for IDE/agent hosts.
 - Neovim (`manual`): see `integrations/neovim/README.md`.
 - JetBrains (`manual`): see `integrations/jetbrains/README.md`.
 - OpenClaw (`community`): see `integrations/openclaw/README.md`.
+
+## Visual Matrix
+
+See [`../docs/demo/host-matrix.svg`](../docs/demo/host-matrix.svg).
 
 ## Safety Note
 

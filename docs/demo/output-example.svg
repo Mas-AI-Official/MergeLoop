@@ -1,0 +1,21 @@
+<svg width="1400" height="860" viewBox="0 0 1400 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="860" fill="#0B1220"/>
+  <rect x="50" y="50" width="1300" height="760" rx="18" fill="#0F172A" stroke="#334155"/>
+  <text x="90" y="118" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700">Merged Output Example</text>
+
+  <rect x="90" y="160" width="1220" height="170" rx="14" fill="#111827" stroke="#1F2937"/>
+  <text x="120" y="206" fill="#A7F3D0" font-family="Consolas, Menlo, monospace" font-size="26">Agreement</text>
+  <text x="120" y="246" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="23">- codex and gemini both recommend phased rollout</text>
+  <text x="120" y="282" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="23">- both require integration tests before deploy</text>
+
+  <rect x="90" y="360" width="1220" height="170" rx="14" fill="#111827" stroke="#1F2937"/>
+  <text x="120" y="406" fill="#FCA5A5" font-family="Consolas, Menlo, monospace" font-size="26">Disagreements</text>
+  <text x="120" y="446" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="23">- gemini flags rollback risk not covered by codex</text>
+  <text x="120" y="482" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="23">- local worker suggests smaller migration batch size</text>
+
+  <rect x="90" y="560" width="1220" height="200" rx="14" fill="#111827" stroke="#1F2937"/>
+  <text x="120" y="606" fill="#93C5FD" font-family="Consolas, Menlo, monospace" font-size="26">Recommended Next Checks</text>
+  <text x="120" y="646" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="23">1. stage rollback drill</text>
+  <text x="120" y="682" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="23">2. compare migration timings on production-like data</text>
+  <text x="120" y="718" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="23">3. re-run council after test evidence is available</text>
+</svg>

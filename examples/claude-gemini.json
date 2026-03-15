@@ -1,0 +1,6 @@
+{
+  "task": "Ask Gemini for alternative architecture tradeoffs and verification steps.",
+  "mode": "single",
+  "workers": ["gemini"],
+  "output_format": "markdown"
+}

@@ -1,0 +1,6 @@
+{
+  "task": "Compare implementation options and identify blind spots.",
+  "mode": "council",
+  "workers": ["codex", "openclaw"],
+  "output_format": "json"
+}

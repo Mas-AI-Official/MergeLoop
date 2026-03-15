@@ -1,0 +1,6 @@
+{
+  "task": "Run local-only synthesis for this TODO list and produce a concise plan.",
+  "mode": "single",
+  "workers": ["local"],
+  "output_format": "json"
+}

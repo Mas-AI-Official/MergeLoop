@@ -1,0 +1,6 @@
+{
+  "task": "Have Codex produce a patch plan for the bug report and return test suggestions.",
+  "mode": "single",
+  "workers": ["codex"],
+  "output_format": "markdown"
+}

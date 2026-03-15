@@ -1,7 +1,26 @@
 {
   "name": "councilkit",
   "version": "0.1.0",
-  "description": "Claude Code plugin and bundled MCP server for local multi-model CLI orchestration",
+  "description": "MCP-native model council orchestration for Claude Code, Codex, Gemini, and local workers. Use subscriptions first, API optional.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude-code",
+    "codex",
+    "gemini",
+    "orchestration",
+    "multi-agent",
+    "council",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mas-AI-Official/councilkit.git"
+  },
+  "homepage": "https://github.com/Mas-AI-Official/councilkit#readme",
+  "bugs": {
+    "url": "https://github.com/Mas-AI-Official/councilkit/issues"
+  },
   "type": "module",
   "main": "dist/server.js",
   "bin": {
@@ -17,8 +36,12 @@
     "skills",
     "integrations",
     "agents",
+    "docs",
     "examples",
     "README.md",
+    "CHANGELOG.md",
+    "ROADMAP.md",
+    "SECURITY.md",
     "LEGAL_COMPLIANCE.md",
     "LICENSE",
     "CONTRIBUTING.md",
@@ -31,7 +54,10 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js",
     "test": "tsx --test test/**/*.test.ts",
-    "doctor": "node scripts/doctor.mjs"
+    "doctor": "node scripts/doctor.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "demo:render": "node scripts/render-demo-frames.mjs",
+    "launch:check": "npm test && npm run build && npm run smoke"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1"

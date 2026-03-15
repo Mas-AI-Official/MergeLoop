@@ -1,0 +1,6 @@
+{
+  "task": "Summarize this refactor plan in 5 bullets.",
+  "mode": "single",
+  "workers": ["codex"],
+  "output_format": "json"
+}
