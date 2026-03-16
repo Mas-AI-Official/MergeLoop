@@ -106,7 +106,7 @@ function assertNodeVersion() {
 }
 
 async function runSyntheticCouncilRequest() {
-  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "councilkit-smoke-"));
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "mergeloop-smoke-"));
   const configPath = path.join(tempDir, "config.json");
   const mcpPath = path.join(tempDir, "mcp.config.json");
   const quotedWorker = fakeWorkerPath.replaceAll("\\", "/");
@@ -170,14 +170,14 @@ async function runSyntheticCouncilRequest() {
     },
     persistence: {
       enabled: false,
-      directory: "~/.councilkit/runs"
+      directory: "~/.mergeloop/runs"
     }
   };
 
   await fs.writeFile(configPath, `${JSON.stringify(config, null, 2)}\n`, "utf8");
 
-  const previousConfig = process.env.COUNCILKIT_CONFIG;
-  process.env.COUNCILKIT_CONFIG = configPath;
+  const previousConfig = process.env.MERGELOOP_CONFIG;
+  process.env.MERGELOOP_CONFIG = configPath;
 
   try {
     const modulePath = pathToFileURL(path.join(root, "dist", "index.js")).href;
@@ -202,9 +202,9 @@ async function runSyntheticCouncilRequest() {
     }
   } finally {
     if (previousConfig === undefined) {
-      delete process.env.COUNCILKIT_CONFIG;
+      delete process.env.MERGELOOP_CONFIG;
     } else {
-      process.env.COUNCILKIT_CONFIG = previousConfig;
+      process.env.MERGELOOP_CONFIG = previousConfig;
     }
     await fs.rm(tempDir, { recursive: true, force: true });
   }

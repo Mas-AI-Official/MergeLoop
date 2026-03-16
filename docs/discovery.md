@@ -1,10 +1,10 @@
 # Discovery
 
-CouncilKit discovery is metadata-driven. It does not assume every MCP server is a worker.
+MergeLoop discovery is metadata-driven. It does not assume every MCP server is a worker.
 
 ## Discovery Flow
 
-1. Load CouncilKit config.
+1. Load MergeLoop config.
 2. Read MCP config files from `discovery.mcp_config_paths` (plus local `.mcp.json`).
 3. Parse `mcpServers` entries.
 4. Register only servers with explicit worker metadata when `require_worker_metadata` is true.

@@ -1,6 +1,6 @@
 # Security Notes
 
-CouncilKit is an orchestration layer. It does not implement vendor authentication itself.
+MergeLoop is an orchestration layer. It does not implement vendor authentication itself.
 
 ## Security Model
 

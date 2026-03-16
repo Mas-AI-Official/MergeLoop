@@ -133,7 +133,7 @@ export function recommendNextChecks(synthesisInputs, results) {
 }
 export function formatCouncilRunMarkdown(result) {
     const lines = [
-        `# CouncilKit Run`,
+        `# MergeLoop Run`,
         ``,
         `- Task: ${result.task}`,
         `- Mode: ${result.mode}`,

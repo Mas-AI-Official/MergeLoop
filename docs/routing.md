@@ -1,6 +1,6 @@
 # Routing
 
-CouncilKit routing is heuristic-based and intentionally simple.
+MergeLoop routing is heuristic-based and intentionally simple.
 
 ## Goals
 
@@ -55,7 +55,7 @@ If `workers` is provided in the request, routing respects that explicit list.
 
 ## Output Metadata
 
-`council_run` metadata includes:
+`mergeloop_run` metadata includes:
 
 - `selected_workers`
 - `task_profile`

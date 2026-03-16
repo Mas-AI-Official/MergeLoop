@@ -1,10 +1,10 @@
-# CouncilKit
+# MergeLoop
 
-![CouncilKit Wordmark](./assets/wordmark.svg)
+![MergeLoop Wordmark](./assets/wordmark.svg)
 
 ## One prompt. Many models. One answer.
 
-CouncilKit is a host-agnostic model council for MCP, CLI, and optional API workers.
+MergeLoop is a host-agnostic model council for MCP, CLI, and optional API workers.
 It routes tasks across selected workers and returns one unified answer.
 It is not Claude-only and it is not limited to fixed built-in workers.
 
@@ -16,7 +16,7 @@ For many workflows, direct API setup is optional, not required.
 
 Provider and host quotas still apply.
 
-![CouncilKit Hero](./docs/demo/hero.svg)
+![MergeLoop Hero](./docs/demo/hero.svg)
 
 Static fallback: [docs/demo/hero-static.svg](./docs/demo/hero-static.svg)
 
@@ -41,8 +41,8 @@ Setup wizard features:
 
 - detects local CLIs (`codex`, `gemini`, `ollama`, `claude`)
 - helps choose host + workers + routing style
-- writes/merges `councilkit.settings.json`
-- can auto-merge `councilkit` MCP entry into selected host config
+- writes/merges `mergeloop.settings.json`
+- can auto-merge `mergeloop` MCP entry into selected host config
 - creates timestamped backups before file changes
 - runs `doctor` + `smoke` at the end (unless dry-run)
 
@@ -69,24 +69,24 @@ Docs:
 ## Why This Exists
 
 Most teams already pay for multiple model subscriptions and run local tools, but still operate them one-at-a-time.
-CouncilKit adds a single orchestration layer so one prompt can produce:
+MergeLoop adds a single orchestration layer so one prompt can produce:
 
 - parallel worker outputs
 - explicit agreement/disagreement signals
 - a merged recommendation and next verification checks
 
-## What CouncilKit Is
+## What MergeLoop Is
 
-- An MCP-native orchestration runtime (`council-hub`)
+- An MCP-native orchestration runtime (`mergeloop-hub`)
 - A host-agnostic middle layer (not tied to one editor/agent)
 - A worker registry with discovery + routing heuristics
 - A runtime that can combine MCP servers, CLI workers, local runtimes, and optional API adapters
 - A bundled Claude Code plugin path in this repo (without making Claude the only host path)
 
-## What Makes CouncilKit Different?
+## What Makes MergeLoop Different?
 
 Many workflows force everything through one provider or one model path.
-CouncilKit keeps hosts and workers separate, so one request can combine:
+MergeLoop keeps hosts and workers separate, so one request can combine:
 
 - MCP-connected workers
 - CLI workers (for example Codex CLI and Gemini CLI)
@@ -96,7 +96,7 @@ CouncilKit keeps hosts and workers separate, so one request can combine:
 This is practical for teams already paying for subscriptions and running local tooling.
 You can start subscription-first and local-first, then add API adapters only if and when they help.
 
-## What CouncilKit Is Not
+## What MergeLoop Is Not
 
 - Not a quota bypass
 - Not a credential harvester
@@ -105,11 +105,11 @@ You can start subscription-first and local-first, then add API adapters only if 
 
 ## How It Works
 
-1. A host sends `task`, `mode`, and optional worker hints to `council_run`.
-2. CouncilKit builds a worker registry from built-ins, config-defined workers, and discovery candidates.
+1. A host sends `task`, `mode`, and optional worker hints to `mergeloop_run`.
+2. MergeLoop builds a worker registry from built-ins, config-defined workers, and discovery candidates.
 3. Router scores workers against task profile (coding/research/planning/privacy).
 4. Selected workers run in parallel.
-5. CouncilKit returns one output bundle:
+5. MergeLoop returns one output bundle:
    `results`, `synthesis_inputs`, `disagreements`, `recommended_next_checks`.
 
 Workflow visuals:
@@ -119,8 +119,8 @@ Workflow visuals:
 ## Hosts vs Workers
 
 - Host: where the user starts work (Claude Code, generic MCP host, CLI wrapper).
-- Worker: execution target CouncilKit calls (Codex CLI, Gemini CLI, Ollama, custom CLI/MCP/API worker definitions).
-- CouncilKit Core: the orchestration layer between host and workers.
+- Worker: execution target MergeLoop calls (Codex CLI, Gemini CLI, Ollama, custom CLI/MCP/API worker definitions).
+- MergeLoop Core: the orchestration layer between host and workers.
 - Worker selection is registry + routing based, not locked to a fixed worker list.
 
 Details: [docs/architecture.md](./docs/architecture.md)
@@ -129,7 +129,7 @@ Details: [docs/architecture.md](./docs/architecture.md)
 
 ### First-Class
 
-- CouncilKit core runtime + MCP server
+- MergeLoop core runtime + MCP server
 - Claude Code plugin bundle in this repo
 - Built-in CLI workers: `codex`, `gemini`, `local`, `ollama`
 
@@ -172,7 +172,7 @@ npm run doctor
 ```
 
 If `doctor` fails only because vendor CLIs are missing, install/auth those CLIs or disable those workers in config.
-Missing worker CLIs are external local dependency checks, not CouncilKit build failures.
+Missing worker CLIs are external local dependency checks, not MergeLoop build failures.
 
 Windows note: native Node is supported. WSL is recommended if your worker CLIs are Linux-first.
 
@@ -200,7 +200,7 @@ ollama serve
 npm run doctor
 ```
 
-5. Add CouncilKit to Gemini MCP config (`~/.gemini/settings.json`):
+5. Add MergeLoop to Gemini MCP config (`~/.gemini/settings.json`):
 
 ```json
 {
@@ -209,9 +209,9 @@ npm run doctor
       "command": "npx",
       "args": ["-y", "@google-cloud/cloud-run-mcp"]
     },
-    "councilkit": {
+    "mergeloop": {
       "command": "node",
-      "args": ["D:/Ideas/councilkit/dist/server.js"]
+      "args": ["D:/Ideas/MergeLoop/dist/server.js"]
     }
   }
 }
@@ -220,7 +220,7 @@ npm run doctor
 6. Restart/reload Gemini, then prompt:
 
 ```text
-Use councilkit.council_run in council mode with workers gemini, local, codex.
+Use mergeloop.mergeloop_run in council mode with workers gemini, local, codex.
 Task: review this migration plan and return disagreements plus next checks.
 ```
 
@@ -237,7 +237,7 @@ claude --plugin-dir .
 From the parent directory instead:
 
 ```bash
-claude --plugin-dir ./councilkit
+claude --plugin-dir ./MergeLoop
 ```
 
 Plugin files:
@@ -252,9 +252,9 @@ Plugin files:
 ```json
 {
   "mcpServers": {
-    "council-hub": {
+    "mergeloop-hub": {
       "command": "node",
-      "args": ["/absolute/path/to/councilkit/dist/server.js"]
+      "args": ["/absolute/path/to/MergeLoop/dist/server.js"]
     }
   }
 }
@@ -301,7 +301,7 @@ Manual/template integrations require local host verification; see [integrations/
 
 ## Configuration Model
 
-Primary file: [`councilkit.settings.json`](./councilkit.settings.json)
+Primary file: [`mergeloop.settings.json`](./mergeloop.settings.json)
 
 Top-level sections:
 - `active_host`
@@ -331,7 +331,7 @@ Read more:
 - Scores workers by role tags, privacy mode, cost hint, fallback order, and health.
 - Selects one worker (`single`) or top workers (`council`) without blasting every worker by default.
 
-## `council_run` Example
+## `mergeloop_run` Example
 
 ```json
 {
@@ -361,11 +361,11 @@ For higher-impact work, council mode gives cross-checking, disagreement visibili
 ## What Happens If Claude Is Capped?
 
 Use another configured host path.
-CouncilKit is host-agnostic, but each host and worker still has its own limits and policies.
+MergeLoop is host-agnostic, but each host and worker still has its own limits and policies.
 
 ## Use Your Subscriptions First, API Optional
 
-CouncilKit is designed for subscription-first and local-runtime-first workflows.
+MergeLoop is designed for subscription-first and local-runtime-first workflows.
 Use your subscriptions first. Add APIs only when you want or need them.
 For many workflows, direct API setup is optional, not required.
 Host and provider quotas still apply.
@@ -377,7 +377,7 @@ It is only a planned target until a tested adapter is implemented and documented
 
 ## Ollama Local Path
 
-Ollama is a first-class local worker in CouncilKit.
+Ollama is a first-class local worker in MergeLoop.
 It can be used for privacy-sensitive tasks and as a fallback in council mode.
 Default public config uses `local` as a compatibility alias backed by `local_command: "ollama run qwen3:latest"`.
 
@@ -385,10 +385,10 @@ Guide: [docs/ollama.md](./docs/ollama.md)
 
 ## Daena Add-On Mode
 
-CouncilKit can run as an orchestration middle layer for Daena.
+MergeLoop can run as an orchestration middle layer for Daena.
 
-1. Daena sends one task to `council_run`.
-2. CouncilKit routes and runs selected workers.
+1. Daena sends one task to `mergeloop_run`.
+2. MergeLoop routes and runs selected workers.
 3. Daena consumes disagreements and next-check suggestions.
 
 Examples:
@@ -398,8 +398,8 @@ Examples:
 ## Security, Trust, and Compliance
 
 - Worker CLIs must be installed/authenticated separately.
-- CouncilKit does not scrape credentials or imitate vendor auth.
-- CouncilKit orchestrates workers; it does not mint extra quota.
+- MergeLoop does not scrape credentials or imitate vendor auth.
+- MergeLoop orchestrates workers; it does not mint extra quota.
 - Discovery is metadata-driven; not every MCP server is automatically treated as a worker.
 
 See:
@@ -412,7 +412,7 @@ See:
 - Worker quality and uptime depend on local environment and external CLIs.
 - Some host integrations are manual templates, not end-to-end verified adapters.
 - API worker adapter is configuration-ready but not the core runtime path.
-- Capability metadata is explicit; CouncilKit does not infer full behavior from arbitrary MCP servers.
+- Capability metadata is explicit; MergeLoop does not infer full behavior from arbitrary MCP servers.
 
 ## Demo Assets
 

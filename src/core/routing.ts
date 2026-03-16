@@ -1,7 +1,7 @@
 import type {
   CouncilMode,
   CouncilRunInput,
-  CouncilKitSettings,
+  MergeLoopSettings,
   RoutingScore,
   TaskProfile,
   WorkerRegistryEntry
@@ -71,7 +71,7 @@ export function classifyTask(task: string): TaskProfile {
 function scoreWorker(
   worker: WorkerRegistryEntry,
   profile: TaskProfile,
-  settings: CouncilKitSettings
+  settings: MergeLoopSettings
 ): number {
   if (!worker.enabled) {
     return -10_000;
@@ -146,7 +146,7 @@ export interface WorkerSelectionResult {
 export function selectWorkersForTask(
   input: CouncilRunInput,
   workers: WorkerRegistryEntry[],
-  settings: CouncilKitSettings
+  settings: MergeLoopSettings
 ): WorkerSelectionResult {
   const profile = classifyTask(input.task);
 

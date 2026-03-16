@@ -55,7 +55,7 @@ async function main() {
   const frames = [
     frameTemplate({
       title: "Codex Host Sends One Prompt",
-      subtitle: "CouncilKit receives one task and prepares orchestration metadata.",
+      subtitle: "MergeLoop receives one task and prepares orchestration metadata.",
       step: 1,
       blockA: {
         title: "Host",
@@ -64,7 +64,7 @@ async function main() {
         line3: "mode: council"
       },
       blockB: {
-        title: "CouncilKit Core",
+        title: "MergeLoop Core",
         line1: "Discovery: worker metadata",
         line2: "Routing: select best workers",
         line3: "Synthesis plan prepared"
@@ -101,7 +101,7 @@ async function main() {
     }),
     frameTemplate({
       title: "One Unified Answer Returns",
-      subtitle: "CouncilKit merges outputs into one final response package.",
+      subtitle: "MergeLoop merges outputs into one final response package.",
       step: 3,
       blockA: {
         title: "Synthesis",
@@ -134,7 +134,7 @@ async function main() {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CouncilKit Demo Storyboard</title>
+    <title>MergeLoop Demo Storyboard</title>
     <style>
       body { margin: 0; background: #020617; color: #e2e8f0; font-family: Segoe UI, Arial, sans-serif; }
       main { max-width: 1366px; margin: 24px auto; padding: 0 16px 32px; }
@@ -147,10 +147,10 @@ async function main() {
   </head>
   <body>
     <main>
-      <h1>CouncilKit Demo (5-10s storyboard)</h1>
+      <h1>MergeLoop Demo (5-10s storyboard)</h1>
       <p>Scenario: Codex host + Gemini research worker + Ollama local worker -> one unified answer.</p>
       <div class="player">
-        <img id="hero-frame" src="./frame-01.svg" alt="CouncilKit demo frame" />
+        <img id="hero-frame" src="./frame-01.svg" alt="MergeLoop demo frame" />
       </div>
       <div class="frames">
         <img src="./frame-01.svg" alt="Frame 1" />

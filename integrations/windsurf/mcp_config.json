@@ -1,9 +1,9 @@
 {
   "mcpServers": {
-    "council-hub": {
+    "mergeloop-hub": {
       "command": "node",
       "args": [
-        "/absolute/path/to/councilkit/dist/server.js"
+        "/absolute/path/to/MergeLoop/dist/server.js"
       ]
     }
   }

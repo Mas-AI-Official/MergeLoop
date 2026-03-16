@@ -106,7 +106,7 @@ const DEFAULT_SETTINGS = {
     custom_workers: {},
     persistence: {
         enabled: true,
-        directory: "~/.councilkit/runs"
+        directory: "~/.mergeloop/runs"
     }
 };
 function isPlainObject(value) {
@@ -264,9 +264,9 @@ function normalizeRuntimeSettings(settings) {
 }
 export async function loadSettings(cwd = process.cwd()) {
     const candidatePaths = [
-        process.env.COUNCILKIT_CONFIG,
-        path.join(cwd, "councilkit.settings.json"),
-        normalizePath("~/.councilkit/config.json")
+        process.env.MERGELOOP_CONFIG,
+        path.join(cwd, "mergeloop.settings.json"),
+        normalizePath("~/.mergeloop/config.json")
     ].filter((value) => Boolean(value));
     for (const candidate of candidatePaths) {
         try {

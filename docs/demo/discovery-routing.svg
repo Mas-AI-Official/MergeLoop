@@ -60,6 +60,6 @@
   <path d="M1150 540H1178" stroke="#34D399" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowGreen)"/>
 
   <rect x="80" y="730" width="1440" height="130" rx="14" fill="#111827" stroke="#334155"/>
-  <text x="112" y="786" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="26">CouncilKit keeps discovery and routing transparent with task_profile + routing_scores metadata.</text>
+  <text x="112" y="786" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="26">MergeLoop keeps discovery and routing transparent with task_profile + routing_scores metadata.</text>
   <text x="112" y="824" fill="#93C5FD" font-family="Consolas, Menlo, monospace" font-size="26">Use your subscriptions first, then add optional API workers only when needed.</text>
 </svg>

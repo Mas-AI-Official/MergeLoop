@@ -1,13 +1,13 @@
 # Architecture
 
-CouncilKit architecture separates hosts and workers:
+MergeLoop architecture separates hosts and workers:
 
-Host -> CouncilKit Core -> Worker Registry + Routing -> Selected Workers -> Unified Answer
+Host -> MergeLoop Core -> Worker Registry + Routing -> Selected Workers -> Unified Answer
 
 ## Core Components
 
-- `CouncilKit Core`: orchestration engine + synthesis + persistence.
-- `council-hub`: MCP stdio server (`src/mcp/server.ts`).
+- `MergeLoop Core`: orchestration engine + synthesis + persistence.
+- `mergeloop-hub`: MCP stdio server (`src/mcp/server.ts`).
 - Worker adapters:
   - CLI worker adapter (active today)
   - MCP worker adapter pattern (discovery/config path)
@@ -15,9 +15,9 @@ Host -> CouncilKit Core -> Worker Registry + Routing -> Selected Workers -> Unif
 
 ## Host vs Worker Separation
 
-- Host: entrypoint that invokes `council_run`.
+- Host: entrypoint that invokes `mergeloop_run`.
 - Worker: model/tool executor chosen by registry + router.
-- CouncilKit: middle layer coordinating fan-out and merge.
+- MergeLoop: middle layer coordinating fan-out and merge.
 
 This allows one runtime to support multiple host paths without hard-coding one editor or one vendor.
 

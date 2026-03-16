@@ -19,7 +19,7 @@
   <text x="830" y="234" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Notes</text>
 
   <g font-family="Segoe UI, Arial, sans-serif" font-size="23" fill="#E5E7EB">
-    <text x="120" y="302">CouncilKit Core (MCP server + orchestration)</text>
+    <text x="120" y="302">MergeLoop Core (MCP server + orchestration)</text>
     <text x="120" y="358">Claude Code plugin bundle</text>
     <text x="120" y="414">VS Code / Cursor / Windsurf templates</text>
     <text x="120" y="470">OpenClaw / Zed / Neovim / JetBrains docs</text>
@@ -64,6 +64,6 @@
   </g>
 
   <rect x="90" y="764" width="1220" height="116" rx="12" fill="#111827" stroke="#334155"/>
-  <text x="122" y="820" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="24">CouncilKit does not claim universal support for every IDE/agent.</text>
+  <text x="122" y="820" fill="#E5E7EB" font-family="Consolas, Menlo, monospace" font-size="24">MergeLoop does not claim universal support for every IDE/agent.</text>
   <text x="122" y="854" fill="#93C5FD" font-family="Consolas, Menlo, monospace" font-size="24">Support level labels are explicit to keep integration claims honest.</text>
 </svg>

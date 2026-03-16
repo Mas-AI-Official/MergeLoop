@@ -1,12 +1,12 @@
 # Quickstart
 
-CouncilKit is host-agnostic and worker-agnostic.
+MergeLoop is host-agnostic and worker-agnostic.
 
 ## Prerequisites
 
 - Node.js 20+
 - At least one worker CLI installed/authenticated (`codex`, `gemini`, `ollama`, or custom worker tool)
-- MCP-capable host (or run CouncilKit directly and wire it manually)
+- MCP-capable host (or run MergeLoop directly and wire it manually)
 
 ## Install
 
@@ -30,7 +30,7 @@ npm run doctor
 ```
 
 If `doctor` reports missing external CLIs, install/auth those tools or disable their worker entries.
-Missing worker CLIs are external dependency checks, not CouncilKit build failures.
+Missing worker CLIs are external dependency checks, not MergeLoop build failures.
 
 ## Host Setup
 
@@ -46,7 +46,7 @@ Register `dist/server.js` as an MCP stdio server.
 
 ### Gemini host path
 
-Configure CouncilKit in `~/.gemini/settings.json` and reload Gemini.
+Configure MergeLoop in `~/.gemini/settings.json` and reload Gemini.
 See [gemini.md](./gemini.md) for the exact config and test prompt.
 
 ### Manual integrations
@@ -99,9 +99,9 @@ Gemini MCP config (`~/.gemini/settings.json`):
 ```json
 {
   "mcpServers": {
-    "councilkit": {
+    "mergeloop": {
       "command": "node",
-      "args": ["D:/Ideas/councilkit/dist/server.js"]
+      "args": ["D:/Ideas/MergeLoop/dist/server.js"]
     }
   }
 }
@@ -110,7 +110,7 @@ Gemini MCP config (`~/.gemini/settings.json`):
 Then restart/reload Gemini and run:
 
 ```text
-Use councilkit.council_run with workers gemini, local, codex and return disagreements + next checks.
+Use mergeloop.mergeloop_run with workers gemini, local, codex and return disagreements + next checks.
 ```
 
 ## Discovery + Routing
@@ -131,7 +131,7 @@ See:
 
 ## Daena Add-On Mode
 
-CouncilKit can be used as Daena council middleware.
+MergeLoop can be used as Daena council middleware.
 
 References:
 

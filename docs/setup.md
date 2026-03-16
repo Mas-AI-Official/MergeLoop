@@ -1,6 +1,6 @@
 # Setup Wizard
 
-Use the interactive setup flow to configure CouncilKit quickly:
+Use the interactive setup flow to configure MergeLoop quickly:
 
 ```bash
 npm run setup
@@ -17,13 +17,13 @@ npm run setup
 
 ## What Setup Configures
 
-- merges/writes `councilkit.settings.json`
+- merges/writes `mergeloop.settings.json`
 - lets you select:
   - host target
   - workers
   - routing style
   - persistence directory
-- optionally auto-merges `councilkit` MCP entry into selected host config
+- optionally auto-merges `mergeloop` MCP entry into selected host config
 - creates timestamped backups before modifying existing files
 
 ## Safe Modes

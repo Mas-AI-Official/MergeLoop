@@ -45,9 +45,9 @@ function firstExecutable(command) {
 }
 
 async function readSettings(cwd) {
-  const envPath = process.env.COUNCILKIT_CONFIG;
-  const localPath = path.join(cwd, "councilkit.settings.json");
-  const homePath = path.join(expandHome("~/.councilkit"), "config.json");
+  const envPath = process.env.MERGELOOP_CONFIG;
+  const localPath = path.join(cwd, "mergeloop.settings.json");
+  const homePath = path.join(expandHome("~/.mergeloop"), "config.json");
 
   for (const candidate of [envPath, localPath, homePath]) {
     if (!candidate) {
@@ -170,7 +170,7 @@ async function main() {
     });
   }
 
-  console.log("CouncilKit Doctor");
+  console.log("MergeLoop Doctor");
   console.log(`Config: ${configPath}`);
   console.log("");
 
@@ -200,11 +200,11 @@ async function main() {
 
   if (missingWorkers.length > 0) {
     console.log(
-      "Missing worker CLIs were detected. This is an expected external dependency check, not a CouncilKit build failure."
+      "Missing worker CLIs were detected. This is an expected external dependency check, not a MergeLoop build failure."
     );
     console.log("Next steps:");
     console.log("1. Install and authenticate each missing worker CLI.");
-    console.log("2. Or disable missing workers in councilkit.settings.json.");
+    console.log("2. Or disable missing workers in mergeloop.settings.json.");
     console.log("3. Re-run `npm run doctor`.");
     console.log("");
     for (const worker of missingWorkers) {
@@ -227,7 +227,7 @@ async function main() {
 
   if (missingCore.length === 0 && missingWorkers.length > 0) {
     console.log("");
-    console.log("CouncilKit build/runtime integrity checks are otherwise OK.");
+    console.log("MergeLoop build/runtime integrity checks are otherwise OK.");
   }
 
   process.exitCode = 1;

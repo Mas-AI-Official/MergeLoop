@@ -1,16 +1,16 @@
 # Suggested HN Title
 
-Show HN: CouncilKit - Host-agnostic model council over MCP and CLI workers
+Show HN: MergeLoop - Host-agnostic model council over MCP and CLI workers
 
 # Suggested HN Body
 
-CouncilKit is an orchestration middle layer between hosts and workers.
+MergeLoop is an orchestration middle layer between hosts and workers.
 
 Host and worker are separate:
 - Host = user entrypoint (Claude Code, generic MCP host, wrappers)
 - Worker = execution target (CLI today, MCP/API patterns documented)
 
-CouncilKit returns one merged output:
+MergeLoop returns one merged output:
 - worker results
 - synthesis inputs
 - disagreements

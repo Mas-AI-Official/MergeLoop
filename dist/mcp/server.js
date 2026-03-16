@@ -16,7 +16,7 @@ function readArguments(request) {
 }
 export async function startServer() {
     const server = new Server({
-        name: "council-hub",
+        name: "mergeloop-hub",
         version: "0.1.0"
     }, {
         capabilities: {
@@ -27,7 +27,7 @@ export async function startServer() {
     server.setRequestHandler(ListToolsRequestSchema, async () => ({
         tools: [
             {
-                name: "council_run",
+                name: "mergeloop_run",
                 description: "Run one or more local model CLIs in single or council mode, capture outputs, identify disagreements, and return a synthesis-ready bundle.",
                 inputSchema: {
                     type: "object",
@@ -61,7 +61,7 @@ export async function startServer() {
         ]
     }));
     server.setRequestHandler(CallToolRequestSchema, async (request) => {
-        if (request.params.name !== "council_run") {
+        if (request.params.name !== "mergeloop_run") {
             throw new Error(`Unknown tool: ${request.params.name}`);
         }
         try {

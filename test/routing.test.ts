@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { classifyTask, selectWorkersForTask } from "../src/core/routing.js";
-import type { CouncilKitSettings, WorkerRegistryEntry } from "../src/types/council.js";
+import type { MergeLoopSettings, WorkerRegistryEntry } from "../src/types/council.js";
 
 const workerPool: WorkerRegistryEntry[] = [
   {
@@ -52,7 +52,7 @@ const workerPool: WorkerRegistryEntry[] = [
   }
 ];
 
-const settings: CouncilKitSettings = {
+const settings: MergeLoopSettings = {
   codex_command: "codex",
   gemini_command: "gemini",
   local_command: null,
@@ -70,7 +70,7 @@ const settings: CouncilKitSettings = {
   },
   persistence: {
     enabled: false,
-    directory: "~/.councilkit/runs"
+    directory: "~/.mergeloop/runs"
   },
   routing: {
     default_mode: "council",

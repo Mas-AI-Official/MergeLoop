@@ -30,8 +30,8 @@ function makePreviewSvg(framePngs) {
   </defs>
   <rect width="1600" height="900" fill="#0B1220" />
   <rect x="38" y="34" width="1524" height="832" rx="24" fill="#111827" stroke="#334155" stroke-width="2" />
-  <text x="74" y="104" fill="url(#heroGrad)" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700">CouncilKit Demo Preview</text>
-  <text x="74" y="146" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="24">Host prompt -> CouncilKit routing -> Workers -> Unified Answer</text>
+  <text x="74" y="104" fill="url(#heroGrad)" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700">MergeLoop Demo Preview</text>
+  <text x="74" y="146" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="24">Host prompt -> MergeLoop routing -> Workers -> Unified Answer</text>
   <text x="74" y="182" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="22">Scenario: Codex host + Gemini research + Ollama local fallback</text>
   <image href="${toImage(framePngs[0])}" x="74" y="226" width="470" height="264" />
   <image href="${toImage(framePngs[1])}" x="564" y="226" width="470" height="264" />

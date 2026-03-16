@@ -1,7 +1,7 @@
 import { parseCommand } from "../core/command.js";
 import { parseJsonFromText } from "../core/json.js";
 import type { CommandRunner } from "../core/subprocess.js";
-import type { CouncilKitSettings, WorkerResult } from "../types/council.js";
+import type { MergeLoopSettings, WorkerResult } from "../types/council.js";
 import type { WorkerAdapter, WorkerContext } from "./types.js";
 
 function buildArgs(command: string, task: string): { executable: string; args: string[] } {
@@ -58,7 +58,7 @@ export function createCliWorkerAdapter(
 
 export function getCustomWorker(
   name: string,
-  settings: CouncilKitSettings
+  settings: MergeLoopSettings
 ): WorkerAdapter | undefined {
   const config = settings.custom_workers?.[name];
   if (!config) {

@@ -18,6 +18,6 @@ All notable changes to this project are documented in this file.
 - Initial release with:
   - Council Hub MCP server
   - Claude Code plugin packaging
-  - `council_run` tool
+  - `mergeloop_run` tool
   - built-in workers (`codex`, `gemini`, `local`)
   - custom worker support

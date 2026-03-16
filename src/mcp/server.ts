@@ -25,7 +25,7 @@ function readArguments(request: CallToolRequest): CouncilRunInput {
 export async function startServer(): Promise<void> {
   const server = new Server(
     {
-      name: "council-hub",
+      name: "mergeloop-hub",
       version: "0.1.0"
     },
     {
@@ -40,7 +40,7 @@ export async function startServer(): Promise<void> {
   server.setRequestHandler(ListToolsRequestSchema, async () => ({
     tools: [
       {
-        name: "council_run",
+        name: "mergeloop_run",
         description:
           "Run one or more local model CLIs in single or council mode, capture outputs, identify disagreements, and return a synthesis-ready bundle.",
         inputSchema: {
@@ -77,7 +77,7 @@ export async function startServer(): Promise<void> {
   }));
 
   server.setRequestHandler(CallToolRequestSchema, async (request) => {
-    if (request.params.name !== "council_run") {
+    if (request.params.name !== "mergeloop_run") {
       throw new Error(`Unknown tool: ${request.params.name}`);
     }
 

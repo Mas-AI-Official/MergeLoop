@@ -1,5 +1,5 @@
 {
-  "name": "councilkit",
+  "name": "mergeloop",
   "version": "0.1.0",
   "description": "Host-agnostic model council runtime across MCP and CLI workers, with optional future API adapters. Use subscriptions first, API optional.",
   "keywords": [
@@ -18,16 +18,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Mas-AI-Official/councilkit.git"
+    "url": "https://github.com/Mas-AI-Official/MergeLoop.git"
   },
-  "homepage": "https://github.com/Mas-AI-Official/councilkit#readme",
+  "homepage": "https://github.com/Mas-AI-Official/MergeLoop#readme",
   "bugs": {
-    "url": "https://github.com/Mas-AI-Official/councilkit/issues"
+    "url": "https://github.com/Mas-AI-Official/MergeLoop/issues"
   },
   "type": "module",
   "main": "dist/server.js",
   "bin": {
-    "council-hub": "./bin/council-hub.js"
+    "mergeloop-hub": "./bin/mergeloop-hub.js"
   },
   "files": [
     "dist",
@@ -48,7 +48,7 @@
     "LEGAL_COMPLIANCE.md",
     "LICENSE",
     "CONTRIBUTING.md",
-    "councilkit.settings.json"
+    "mergeloop.settings.json"
   ],
   "engines": {
     "node": ">=20.0.0"

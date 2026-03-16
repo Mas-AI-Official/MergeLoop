@@ -48,4 +48,4 @@ Storyboard scenario:
 
 ## GIF Note
 
-`councilkit-demo.gif` is not generated automatically in this repo. Use the storyboard frames to produce a GIF in your preferred tooling.
+`mergeloop-demo.gif` is not generated automatically in this repo. Use the storyboard frames to produce a GIF in your preferred tooling.

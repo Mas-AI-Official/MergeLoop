@@ -4,7 +4,7 @@
     "daena": {
       "type": "mcp_host",
       "enabled": true,
-      "notes": "Daena calls council-hub as orchestration middleware."
+      "notes": "Daena calls mergeloop-hub as orchestration middleware."
     }
   },
   "workers": {

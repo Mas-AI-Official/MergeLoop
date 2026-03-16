@@ -9,7 +9,7 @@
   <rect width="1366" height="768" fill="#0B1220"/>
   <rect x="40" y="36" width="1286" height="696" rx="22" fill="#111827" stroke="#334155" stroke-width="2"/>
   <text x="86" y="104" fill="url(#titleGrad)" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700">Codex Host Sends One Prompt</text>
-  <text x="86" y="146" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="25">CouncilKit receives one task and prepares orchestration metadata.</text>
+  <text x="86" y="146" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="25">MergeLoop receives one task and prepares orchestration metadata.</text>
   <text x="1100" y="104" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Step 1/3</text>
   <rect x="86" y="186" width="1194" height="500" rx="18" fill="#0F172A" stroke="#1F2937"/>
   <rect x="124" y="228" width="350" height="400" rx="14" fill="#111827" stroke="#334155"/>
@@ -19,7 +19,7 @@
   <text x="152" y="330" fill="#CBD5E1" font-family="Consolas, Menlo, monospace" font-size="21">Codex CLI host</text>
   <text x="152" y="362" fill="#CBD5E1" font-family="Consolas, Menlo, monospace" font-size="21">task: review migration</text>
   <text x="152" y="394" fill="#CBD5E1" font-family="Consolas, Menlo, monospace" font-size="21">mode: council</text>
-  <text x="538" y="286" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">CouncilKit Core</text>
+  <text x="538" y="286" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">MergeLoop Core</text>
   <text x="538" y="330" fill="#CBD5E1" font-family="Consolas, Menlo, monospace" font-size="21">Discovery: worker metadata</text>
   <text x="538" y="362" fill="#CBD5E1" font-family="Consolas, Menlo, monospace" font-size="21">Routing: select best workers</text>
   <text x="538" y="394" fill="#CBD5E1" font-family="Consolas, Menlo, monospace" font-size="21">Synthesis plan prepared</text>

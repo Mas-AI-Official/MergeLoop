@@ -64,15 +64,15 @@ async function main() {
 
   const result = await removeMcpServerConfig({
     filePath: targetPath,
-    serverName: "councilkit",
+    serverName: "mergeloop",
     dryRun: flags.dryRun
   });
 
-  process.stdout.write("CouncilKit uninstall/rollback helper\n");
+  process.stdout.write("MergeLoop uninstall/rollback helper\n");
   process.stdout.write("------------------------------------\n");
   process.stdout.write(`Target file: ${targetPath}\n`);
   if (!result.changed) {
-    process.stdout.write("No CouncilKit MCP entry found. Nothing changed.\n");
+    process.stdout.write("No MergeLoop MCP entry found. Nothing changed.\n");
     return;
   }
 
@@ -87,7 +87,7 @@ async function main() {
   if (result.backupPath) {
     process.stdout.write(`Backup created: ${result.backupPath}\n`);
   }
-  process.stdout.write("CouncilKit MCP entry removed.\n");
+  process.stdout.write("MergeLoop MCP entry removed.\n");
   process.stdout.write("If needed, restore the backup file to roll back this uninstall.\n");
 }
 

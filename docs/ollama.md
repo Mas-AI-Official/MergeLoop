@@ -1,18 +1,18 @@
 # Ollama Worker
 
-Ollama is a first-class local worker path in CouncilKit.
+Ollama is a first-class local worker path in MergeLoop.
 
-## What CouncilKit Supports
+## What MergeLoop Supports
 
 - Ollama as a local runtime/provider for worker execution
 - CLI worker path (`ollama run ...`)
 - local fallback for privacy-sensitive tasks
 - optional local API awareness (`http://localhost:11434/api`) for future adapter paths
 
-## What CouncilKit Does Not Claim
+## What MergeLoop Does Not Claim
 
-- CouncilKit does **not** claim Ollama is an official universal MCP server by default.
-- CouncilKit integrates Ollama through worker adapters (CLI today, optional local API pattern later).
+- MergeLoop does **not** claim Ollama is an official universal MCP server by default.
+- MergeLoop integrates Ollama through worker adapters (CLI today, optional local API pattern later).
 
 ## Ollama Via `local_command` (legacy-compatible)
 

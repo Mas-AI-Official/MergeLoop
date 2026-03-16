@@ -14,14 +14,14 @@
   </defs>
 
   <rect width="1600" height="900" fill="#0B1220"/>
-  <text x="80" y="88" fill="url(#titleGrad)" font-family="Segoe UI, Arial, sans-serif" font-size="50" font-weight="700">CouncilKit Workflow</text>
-  <text x="80" y="130" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="26">Host -> CouncilKit Core -> Workers -> Unified Answer</text>
+  <text x="80" y="88" fill="url(#titleGrad)" font-family="Segoe UI, Arial, sans-serif" font-size="50" font-weight="700">MergeLoop Workflow</text>
+  <text x="80" y="130" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="26">Host -> MergeLoop Core -> Workers -> Unified Answer</text>
 
   <rect x="80" y="250" width="260" height="130" rx="16" fill="#111827" stroke="#334155" stroke-width="2"/>
   <text x="170" y="324" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Host</text>
 
   <rect x="410" y="190" width="460" height="250" rx="18" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
-  <text x="552" y="250" fill="#E0F2FE" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="700">CouncilKit Core</text>
+  <text x="552" y="250" fill="#E0F2FE" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="700">MergeLoop Core</text>
   <rect x="448" y="286" width="126" height="60" rx="12" fill="#111827" stroke="#334155"/>
   <text x="470" y="324" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600">Discovery</text>
   <rect x="578" y="286" width="126" height="60" rx="12" fill="#111827" stroke="#334155"/>

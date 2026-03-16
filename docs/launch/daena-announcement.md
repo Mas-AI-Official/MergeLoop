@@ -1,6 +1,6 @@
-CouncilKit now supports a Daena add-on mode.
+MergeLoop now supports a Daena add-on mode.
 
-Daena can call CouncilKit as a host path and treat CouncilKit as orchestration middleware:
+Daena can call MergeLoop as a host path and treat MergeLoop as orchestration middleware:
 - dispatch to selected workers
 - collect disagreements
 - run verification loops from recommended checks

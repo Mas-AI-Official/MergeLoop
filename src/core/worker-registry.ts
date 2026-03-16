@@ -1,6 +1,6 @@
 import type {
   CostHint,
-  CouncilKitSettings,
+  MergeLoopSettings,
   DiscoverySettings,
   PrivacyMode,
   WorkerAdapterType,
@@ -115,7 +115,7 @@ function normalizeDefinitionEntry(
   };
 }
 
-function createBuiltinWorkers(settings: CouncilKitSettings): WorkerRegistryEntry[] {
+function createBuiltinWorkers(settings: MergeLoopSettings): WorkerRegistryEntry[] {
   const ollamaCommand = settings.ollama_command ?? "ollama";
   const ollamaModel = settings.ollama_model ?? "qwen3:latest";
   const normalizedOllamaCommand = (() => {
@@ -195,7 +195,7 @@ function createBuiltinWorkers(settings: CouncilKitSettings): WorkerRegistryEntry
   ];
 }
 
-function mapLegacyWorkerRegistry(settings: CouncilKitSettings): Record<string, WorkerDefinition> {
+function mapLegacyWorkerRegistry(settings: MergeLoopSettings): Record<string, WorkerDefinition> {
   const combined: Record<string, WorkerDefinition> = {};
 
   for (const [id, definition] of Object.entries(settings.worker_registry ?? {})) {
@@ -229,7 +229,7 @@ function mapLegacyWorkerRegistry(settings: CouncilKitSettings): Record<string, W
 
 function mapDiscoveredServer(
   server: DiscoveredMcpServer,
-  settings: CouncilKitSettings
+  settings: MergeLoopSettings
 ): WorkerRegistryEntry | undefined {
   const discovery = settings.discovery;
   if (!(discovery?.auto_register_mcp_workers ?? true)) {
@@ -276,7 +276,7 @@ function mapDiscoveredServer(
   };
 }
 
-function mapDiscoveredCliCandidates(settings: CouncilKitSettings): WorkerRegistryEntry[] {
+function mapDiscoveredCliCandidates(settings: MergeLoopSettings): WorkerRegistryEntry[] {
   const discovery = settings.discovery;
   if (!(discovery?.auto_register_cli_workers ?? true)) {
     return [];
@@ -328,7 +328,7 @@ export interface WorkerRegistryBuildResult {
 }
 
 export async function buildWorkerRegistry(
-  settings: CouncilKitSettings,
+  settings: MergeLoopSettings,
   cwd: string
 ): Promise<WorkerRegistryBuildResult> {
   const registry = new Map<string, WorkerRegistryEntry>();

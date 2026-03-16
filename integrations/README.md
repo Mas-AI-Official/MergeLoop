@@ -1,6 +1,6 @@
 # Integrations
 
-CouncilKit is host-agnostic, but integration paths have explicit support levels.
+MergeLoop is host-agnostic, but integration paths have explicit support levels.
 
 ## Support Levels
 
@@ -36,14 +36,14 @@ Host-specific docs/templates:
 
 ## Known-Good Local Test Steps (documented/manual paths)
 
-1. Build CouncilKit:
+1. Build MergeLoop:
    - `npm ci`
    - `npm run build`
 2. Register MCP server path in host config:
    - `command: node`
-   - `args: ["D:/Ideas/councilkit/dist/server.js"]`
+   - `args: ["D:/Ideas/MergeLoop/dist/server.js"]`
 3. Restart/reload host.
-4. Run a direct council test prompt that explicitly calls `council_run`.
+4. Run a direct council test prompt that explicitly calls `mergeloop_run`.
 5. Confirm output includes:
    - `results`
    - `disagreements`
@@ -51,5 +51,5 @@ Host-specific docs/templates:
 
 ## Safety Reminder
 
-Templates configure CouncilKit as an MCP server endpoint only.
+Templates configure MergeLoop as an MCP server endpoint only.
 Worker authentication and usage limits remain controlled by each worker tool.

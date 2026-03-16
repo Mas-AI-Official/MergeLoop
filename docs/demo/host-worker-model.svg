@@ -1,7 +1,7 @@
 <svg width="1400" height="860" viewBox="0 0 1400 860" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1400" height="860" fill="#0B1220"/>
   <text x="70" y="90" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700">Host vs Worker Model</text>
-  <text x="70" y="132" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="26">Hosts call CouncilKit. Workers are called by CouncilKit.</text>
+  <text x="70" y="132" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="26">Hosts call MergeLoop. Workers are called by MergeLoop.</text>
 
   <rect x="70" y="180" width="390" height="240" rx="16" fill="#111827" stroke="#334155"/>
   <text x="110" y="240" fill="#60A5FA" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Hosts</text>
@@ -10,7 +10,7 @@
   <text x="110" y="360" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">- CLI host wrappers</text>
 
   <rect x="505" y="180" width="390" height="240" rx="16" fill="#0F172A" stroke="#38BDF8"/>
-  <text x="553" y="254" fill="#E0F2FE" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700">CouncilKit Core</text>
+  <text x="553" y="254" fill="#E0F2FE" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700">MergeLoop Core</text>
   <text x="552" y="300" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">orchestration + synthesis</text>
   <text x="552" y="336" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="24">one merged answer/report</text>
 

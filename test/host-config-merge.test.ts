@@ -12,10 +12,10 @@ import {
 } from "../scripts/lib/host-config.mjs";
 
 async function createTempDir(): Promise<string> {
-  return fs.mkdtemp(path.join(os.tmpdir(), "councilkit-hostcfg-test-"));
+  return fs.mkdtemp(path.join(os.tmpdir(), "mergeloop-hostcfg-test-"));
 }
 
-test("mergeMcpServerEntry preserves unrelated fields and adds councilkit entry", () => {
+test("mergeMcpServerEntry preserves unrelated fields and adds mergeloop entry", () => {
   const source = {
     name: "sample",
     mcpServers: {
@@ -26,7 +26,7 @@ test("mergeMcpServerEntry preserves unrelated fields and adds councilkit entry",
     }
   };
 
-  const result = mergeMcpServerEntry(source, "councilkit", {
+  const result = mergeMcpServerEntry(source, "mergeloop", {
     command: "node",
     args: ["dist/server.js"]
   });
@@ -34,20 +34,20 @@ test("mergeMcpServerEntry preserves unrelated fields and adds councilkit entry",
   assert.equal(result.changed, true);
   assert.equal(result.merged.name, "sample");
   assert.ok(result.merged.mcpServers.existing);
-  assert.ok(result.merged.mcpServers.councilkit);
+  assert.ok(result.merged.mcpServers.mergeloop);
 });
 
 test("mergeMcpServerEntry avoids duplicate write for equivalent entry", () => {
   const source = {
     mcpServers: {
-      councilkit: {
+      mergeloop: {
         command: "node",
         args: ["dist/server.js"]
       }
     }
   };
 
-  const result = mergeMcpServerEntry(source, "councilkit", {
+  const result = mergeMcpServerEntry(source, "mergeloop", {
     command: "node",
     args: ["dist/server.js"]
   });
@@ -79,7 +79,7 @@ test("upsertMcpServerConfig creates a backup when existing config changes", asyn
 
   const result = await upsertMcpServerConfig({
     filePath: targetPath,
-    serverName: "councilkit",
+    serverName: "mergeloop",
     serverEntry: {
       command: "node",
       args: ["dist/server.js"]
@@ -93,7 +93,7 @@ test("upsertMcpServerConfig creates a backup when existing config changes", asyn
 
   const raw = await fs.readFile(targetPath, "utf8");
   const parsed = JSON.parse(raw);
-  assert.ok(parsed.mcpServers.councilkit);
+  assert.ok(parsed.mcpServers.mergeloop);
   assert.ok(parsed.mcpServers.existing);
 });
 
@@ -122,7 +122,7 @@ test("upsertMcpServerConfig preserves unrelated config in existing file", async 
 
   await upsertMcpServerConfig({
     filePath: targetPath,
-    serverName: "councilkit",
+    serverName: "mergeloop",
     serverEntry: {
       command: "node",
       args: ["dist/server.js"]
@@ -133,13 +133,13 @@ test("upsertMcpServerConfig preserves unrelated config in existing file", async 
   const parsed = JSON.parse(raw);
   assert.equal(parsed.metadata.team, "alpha");
   assert.ok(parsed.mcpServers.cloudrun);
-  assert.ok(parsed.mcpServers.councilkit);
+  assert.ok(parsed.mcpServers.mergeloop);
 });
 
 test("removeMcpServerEntry removes only target server and preserves others", () => {
   const source = {
     mcpServers: {
-      councilkit: {
+      mergeloop: {
         command: "node",
         args: ["dist/server.js"]
       },
@@ -150,13 +150,13 @@ test("removeMcpServerEntry removes only target server and preserves others", () 
     }
   };
 
-  const result = removeMcpServerEntry(source, "councilkit");
+  const result = removeMcpServerEntry(source, "mergeloop");
   assert.equal(result.changed, true);
-  assert.equal(result.merged.mcpServers.councilkit, undefined);
+  assert.equal(result.merged.mcpServers.mergeloop, undefined);
   assert.ok(result.merged.mcpServers.cloudrun);
 });
 
-test("removeMcpServerConfig writes backup and removes councilkit entry", async () => {
+test("removeMcpServerConfig writes backup and removes mergeloop entry", async () => {
   const tempDir = await createTempDir();
   const targetPath = path.join(tempDir, "settings.json");
 
@@ -165,7 +165,7 @@ test("removeMcpServerConfig writes backup and removes councilkit entry", async (
     `${JSON.stringify(
       {
         mcpServers: {
-          councilkit: {
+          mergeloop: {
             command: "node",
             args: ["dist/server.js"]
           },
@@ -183,7 +183,7 @@ test("removeMcpServerConfig writes backup and removes councilkit entry", async (
 
   const result = await removeMcpServerConfig({
     filePath: targetPath,
-    serverName: "councilkit"
+    serverName: "mergeloop"
   });
 
   assert.equal(result.changed, true);
@@ -192,6 +192,6 @@ test("removeMcpServerConfig writes backup and removes councilkit entry", async (
 
   const raw = await fs.readFile(targetPath, "utf8");
   const parsed = JSON.parse(raw);
-  assert.equal(parsed.mcpServers.councilkit, undefined);
+  assert.equal(parsed.mcpServers.mergeloop, undefined);
   assert.ok(parsed.mcpServers.other);
 });

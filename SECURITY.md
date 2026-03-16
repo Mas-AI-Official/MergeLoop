@@ -1,6 +1,6 @@
 # Security Policy
 
-CouncilKit is a local-first orchestration project. Security is primarily about safe tool execution and clear trust boundaries.
+MergeLoop is a local-first orchestration project. Security is primarily about safe tool execution and clear trust boundaries.
 
 ## Supported Versions
 

@@ -1,4 +1,4 @@
-import type { CouncilKitSettings, WorkerRegistryEntry, WorkerResult } from "../types/council.js";
+import type { MergeLoopSettings, WorkerRegistryEntry, WorkerResult } from "../types/council.js";
 import { codexWorker } from "./codex.js";
 import { createCliWorkerAdapter, getCustomWorker } from "./custom.js";
 import { geminiWorker } from "./gemini.js";
@@ -19,7 +19,7 @@ export function listSupportedBuiltinWorkers(): string[] {
 
 export function resolveWorkerAdapter(
   entry: WorkerRegistryEntry,
-  settings: CouncilKitSettings
+  settings: MergeLoopSettings
 ): WorkerAdapter | undefined {
   const builtin = BUILTIN_WORKERS.get(entry.id);
   if (builtin) {

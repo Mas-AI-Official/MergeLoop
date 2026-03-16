@@ -10,15 +10,15 @@ import { selectWorkersForTask } from "./routing.js";
 import { disabledWorkerResult, resolveWorkerAdapter, unavailableAdapterResult, unsupportedWorkerResult } from "../workers/index.js";
 function validateInput(input) {
     if (typeof input.task !== "string" || input.task.trim().length === 0) {
-        throw new Error("council_run requires a non-empty task string.");
+        throw new Error("mergeloop_run requires a non-empty task string.");
     }
     if (input.mode !== "single" && input.mode !== "council") {
-        throw new Error('council_run mode must be "single" or "council".');
+        throw new Error('mergeloop_run mode must be "single" or "council".');
     }
     if (input.output_format !== undefined &&
         input.output_format !== "json" &&
         input.output_format !== "markdown") {
-        throw new Error('council_run output_format must be "json" or "markdown".');
+        throw new Error('mergeloop_run output_format must be "json" or "markdown".');
     }
 }
 function indexById(entries) {
@@ -37,7 +37,7 @@ export class CouncilOrchestrator {
         const workerById = indexById(entries);
         const selection = selectWorkersForTask(input, entries, settings);
         const selectedWorkers = selection.selected_worker_ids;
-        const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "councilkit-"));
+        const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "mergeloop-"));
         try {
             const results = await Promise.all(selectedWorkers.map(async (workerId) => {
                 const entry = workerById.get(workerId);

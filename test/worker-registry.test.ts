@@ -8,9 +8,9 @@ import { loadSettings } from "../src/core/config.js";
 import { buildWorkerRegistry } from "../src/core/worker-registry.js";
 
 async function createFixture(config: unknown, mcpConfig?: unknown): Promise<string> {
-  const directory = await fs.mkdtemp(path.join(os.tmpdir(), "councilkit-registry-test-"));
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), "mergeloop-registry-test-"));
   await fs.writeFile(
-    path.join(directory, "councilkit.settings.json"),
+    path.join(directory, "mergeloop.settings.json"),
     `${JSON.stringify(config, null, 2)}\n`,
     "utf8"
   );
@@ -49,7 +49,7 @@ test("discovery registers only metadata-hinted MCP workers and applies include/e
       },
       persistence: {
         enabled: false,
-        directory: "~/.councilkit/runs"
+        directory: "~/.mergeloop/runs"
       }
     },
     {
@@ -99,7 +99,7 @@ test("discovery can disable selected workers and auto-register CLI candidates", 
     },
     persistence: {
       enabled: false,
-      directory: "~/.councilkit/runs"
+      directory: "~/.mergeloop/runs"
     }
   });
 

@@ -1,4 +1,4 @@
-import type { CouncilKitSettings } from "../types/council.js";
+import type { MergeLoopSettings } from "../types/council.js";
 export interface DiscoveredMcpServer {
     name: string;
     config_path: string;
@@ -6,4 +6,4 @@ export interface DiscoveredMcpServer {
     args?: string[];
     url?: string;
 }
-export declare function discoverMcpServers(settings: CouncilKitSettings, cwd: string): Promise<DiscoveredMcpServer[]>;
+export declare function discoverMcpServers(settings: MergeLoopSettings, cwd: string): Promise<DiscoveredMcpServer[]>;

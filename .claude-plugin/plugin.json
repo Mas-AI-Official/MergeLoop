@@ -1,5 +1,5 @@
 {
-  "name": "councilkit",
+  "name": "mergeloop",
   "version": "0.1.0",
   "description": "Host-agnostic council runtime with bundled Claude Code plugin path."
 }

@@ -1,6 +1,6 @@
 # Rollback and Uninstall
 
-CouncilKit setup writes backups before modifying config files.
+MergeLoop setup writes backups before modifying config files.
 
 ## Backup Strategy
 
@@ -8,7 +8,7 @@ CouncilKit setup writes backups before modifying config files.
   - `<file>.bak.<timestamp>`
 - setup prints backup paths in its summary output
 
-## Remove CouncilKit MCP Entry
+## Remove MergeLoop MCP Entry
 
 Use uninstall helper:
 

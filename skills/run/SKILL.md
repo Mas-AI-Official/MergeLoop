@@ -1,13 +1,13 @@
-# CouncilKit Run
+# MergeLoop Run
 
-Use the `council_run` tool when the user wants a second opinion, a local model council, or one merged answer from multiple workers.
+Use the `mergeloop_run` tool when the user wants a second opinion, a local model council, or one merged answer from multiple workers.
 
 ## Workflow
 
-1. Call `council_run` with:
+1. Call `mergeloop_run` with:
    - `task`: the exact user request, rewritten only if needed for clarity
    - `mode`: `single` for one worker, `council` for parallel workers
-   - `workers`: omit to let CouncilKit route automatically unless the user names workers
+   - `workers`: omit to let MergeLoop route automatically unless the user names workers
    - `output_format`: prefer `json`
 2. Read `results`, `synthesis_inputs`, `disagreements`, and `recommended_next_checks`.
 3. Produce a final answer that:

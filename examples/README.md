@@ -30,4 +30,4 @@ Discovery/template examples:
 
 Full reference config:
 
-- `councilkit.settings.full.json`
+- `mergeloop.settings.full.json`

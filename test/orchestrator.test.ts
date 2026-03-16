@@ -21,9 +21,9 @@ class FakeRunner implements CommandRunner {
 }
 
 async function createFixture(config: unknown): Promise<string> {
-  const directory = await fs.mkdtemp(path.join(os.tmpdir(), "councilkit-test-"));
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), "mergeloop-test-"));
   await fs.writeFile(
-    path.join(directory, "councilkit.settings.json"),
+    path.join(directory, "mergeloop.settings.json"),
     `${JSON.stringify(config, null, 2)}\n`,
     "utf8"
   );
@@ -53,7 +53,7 @@ function error(spec: CommandSpec, stderr: string): CommandExecution {
 }
 
 test("runs council mode with default workers, synthesis, and persistence", async () => {
-  const persistenceDir = await fs.mkdtemp(path.join(os.tmpdir(), "councilkit-runs-"));
+  const persistenceDir = await fs.mkdtemp(path.join(os.tmpdir(), "mergeloop-runs-"));
   const cwd = await createFixture({
     codex_command: "codex",
     gemini_command: "gemini",
@@ -70,7 +70,7 @@ test("runs council mode with default workers, synthesis, and persistence", async
         spec,
         JSON.stringify({
           summary: "Implement the plugin and keep the MCP server bundled locally.",
-          key_points: ["Bundle council-hub in the plugin", "Persist each run to disk"],
+          key_points: ["Bundle mergeloop-hub in the plugin", "Persist each run to disk"],
           risks: ["Plugin packaging may drift from upstream schema"],
           citations_needed: ["Confirm plugin manifest fields against Anthropic docs"]
         })
@@ -91,7 +91,7 @@ test("runs council mode with default workers, synthesis, and persistence", async
   const orchestrator = new CouncilOrchestrator(runner);
   const result = await orchestrator.run(
     {
-      task: "Build councilkit",
+      task: "Build mergeloop",
       mode: "council",
       output_format: "json"
     },
@@ -108,7 +108,7 @@ test("runs council mode with default workers, synthesis, and persistence", async
   );
   assert.ok(result.metadata.persisted_to);
   const persistedContent = await fs.readFile(result.metadata.persisted_to as string, "utf8");
-  assert.match(persistedContent, /Build councilkit/);
+  assert.match(persistedContent, /Build mergeloop/);
 });
 
 test("single mode only runs the first selected worker", async () => {
@@ -118,7 +118,7 @@ test("single mode only runs the first selected worker", async () => {
     default_workers: ["codex", "gemini"],
     persistence: {
       enabled: false,
-      directory: "~/.councilkit/runs"
+      directory: "~/.mergeloop/runs"
     }
   });
 
@@ -158,7 +158,7 @@ test("codex retries without output schema when the installed CLI lacks the flag"
     },
     persistence: {
       enabled: false,
-      directory: "~/.councilkit/runs"
+      directory: "~/.mergeloop/runs"
     }
   });
 
@@ -207,7 +207,7 @@ test("custom workers can be configured and selected", async () => {
     },
     persistence: {
       enabled: false,
-      directory: "~/.councilkit/runs"
+      directory: "~/.mergeloop/runs"
     }
   });
 
@@ -256,7 +256,7 @@ test("worker_registry maps CLI workers into runtime selection order", async () =
     },
     persistence: {
       enabled: false,
-      directory: "~/.councilkit/runs"
+      directory: "~/.mergeloop/runs"
     }
   });
 

@@ -1,6 +1,6 @@
 # Host Auto-Config
 
-CouncilKit setup supports safe host config merge for selected hosts.
+MergeLoop setup supports safe host config merge for selected hosts.
 
 ## Auto-Configured Targets
 
@@ -13,7 +13,7 @@ CouncilKit setup supports safe host config merge for selected hosts.
 
 ## Manual Target
 
-- Claude Code plugin path (`claude --plugin-dir ./councilkit`)  
+- Claude Code plugin path (`claude --plugin-dir ./MergeLoop`)  
   No host JSON file is modified by setup for this path.
 
 ## Merge Behavior
@@ -22,12 +22,12 @@ When auto-configuring a host JSON file, setup:
 
 1. reads existing JSON config
 2. preserves unrelated entries
-3. upserts `mcpServers.councilkit` with `node .../dist/server.js`
-4. avoids duplicate CouncilKit entry if equivalent entry already exists
+3. upserts `mcpServers.mergeloop` with `node .../dist/server.js`
+4. avoids duplicate MergeLoop entry if equivalent entry already exists
 5. creates timestamped backup before any file rewrite
 
 ## Claims and Limits
 
 - Auto-config support is explicit by host and does not imply universal host parity.
-- CouncilKit does not infer worker capability from arbitrary MCP servers.
+- MergeLoop does not infer worker capability from arbitrary MCP servers.
 - Manual verification is still required for host-specific runtime behavior.

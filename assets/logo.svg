@@ -30,7 +30,7 @@
     <tspan fill="#2563EB">Council</tspan><tspan fill="#10B981">Kit</tspan>
   </text>
   <text x="320" y="180" font-family="Segoe UI, Arial, sans-serif" font-size="98" font-weight="800" fill="url(#logoShine)">
-    CouncilKit
+    MergeLoop
   </text>
   <text x="324" y="232" fill="url(#subGrad)" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600">MCP-native. CLI-capable. API-optional.</text>
 </svg>

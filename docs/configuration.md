@@ -1,10 +1,10 @@
 # Configuration
 
-CouncilKit loads settings from:
+MergeLoop loads settings from:
 
-1. `COUNCILKIT_CONFIG` (if set)
-2. `./councilkit.settings.json`
-3. `~/.councilkit/config.json`
+1. `MERGELOOP_CONFIG` (if set)
+2. `./mergeloop.settings.json`
+3. `~/.mergeloop/config.json`
 
 ## Core Schema
 
@@ -82,7 +82,7 @@ CouncilKit loads settings from:
 
 ## Hosts
 
-- `mcp_host`: host calls `council_run` via MCP.
+- `mcp_host`: host calls `mergeloop_run` via MCP.
 - `cli_host`: host wrapper or CLI path.
 - `api_host`: optional/future host pattern.
 
@@ -100,7 +100,7 @@ Host definitions describe entrypoints, not worker executors.
 
 ## Backward Compatibility
 
-CouncilKit still supports legacy fields:
+MergeLoop still supports legacy fields:
 
 - `codex_command`, `gemini_command`, `local_command`, `ollama_command`
 - `worker_registry`
@@ -127,13 +127,13 @@ Run `npm run doctor` after setup; missing workers are reported as local external
 
 ## Persistence
 
-Runs are written to `~/.councilkit/runs/<timestamp>.json` by default.
+Runs are written to `~/.mergeloop/runs/<timestamp>.json` by default.
 
 ```json
 {
   "persistence": {
     "enabled": true,
-    "directory": "~/.councilkit/runs"
+    "directory": "~/.mergeloop/runs"
   }
 }
 ```

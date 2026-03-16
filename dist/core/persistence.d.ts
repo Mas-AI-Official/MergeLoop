@@ -1,2 +1,2 @@
-import type { CouncilKitSettings, CouncilRunOutput } from "../types/council.js";
-export declare function persistRun(result: CouncilRunOutput, settings: CouncilKitSettings): Promise<string | undefined>;
+import type { MergeLoopSettings, CouncilRunOutput } from "../types/council.js";
+export declare function persistRun(result: CouncilRunOutput, settings: MergeLoopSettings): Promise<string | undefined>;

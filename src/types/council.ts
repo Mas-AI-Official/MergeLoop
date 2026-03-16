@@ -144,7 +144,7 @@ export interface RoutingSettings {
   prefer_subscription_before_api?: boolean;
 }
 
-export interface CouncilKitSettings {
+export interface MergeLoopSettings {
   active_host?: string;
   hosts?: Record<string, HostDefinition>;
   workers?: Record<string, WorkerDefinition>;
@@ -208,6 +208,6 @@ export interface WorkerRegistryEntry {
 }
 
 export interface LoadedSettings {
-  settings: CouncilKitSettings;
+  settings: MergeLoopSettings;
   configPath?: string;
 }

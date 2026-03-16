@@ -22,7 +22,7 @@
   <rect x="126" y="394" width="220" height="48" rx="10" fill="#111827" stroke="#334155"/>
   <text x="162" y="425" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">Host</text>
   <rect x="400" y="394" width="268" height="48" rx="10" fill="#111827" stroke="#334155"/>
-  <text x="436" y="425" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">CouncilKit Core</text>
+  <text x="436" y="425" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">MergeLoop Core</text>
   <rect x="722" y="394" width="312" height="48" rx="10" fill="#111827" stroke="#334155"/>
   <text x="754" y="425" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">Workers (MCP / CLI / API)</text>
   <path d="M346 418H400" stroke="#64748B" stroke-width="2"/>

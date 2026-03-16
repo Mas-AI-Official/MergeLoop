@@ -1,9 +1,9 @@
 import type { CommandRunner } from "../core/subprocess.js";
-import type { CouncilKitSettings, WorkerResult } from "../types/council.js";
+import type { MergeLoopSettings, WorkerResult } from "../types/council.js";
 
 export interface WorkerContext {
   task: string;
-  settings: CouncilKitSettings;
+  settings: MergeLoopSettings;
   cwd: string;
   tempDir: string;
 }

@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-import type { CouncilKitSettings, CouncilRunOutput } from "../types/council.js";
+import type { MergeLoopSettings, CouncilRunOutput } from "../types/council.js";
 import { normalizePath } from "./path-utils.js";
 
 function buildTimestamp(): string {
@@ -10,7 +10,7 @@ function buildTimestamp(): string {
 
 export async function persistRun(
   result: CouncilRunOutput,
-  settings: CouncilKitSettings
+  settings: MergeLoopSettings
 ): Promise<string | undefined> {
   if (!settings.persistence.enabled) {
     return undefined;

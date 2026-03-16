@@ -7,9 +7,9 @@ import test from "node:test";
 import { loadSettings } from "../src/core/config.js";
 
 async function createFixture(config: unknown): Promise<string> {
-  const directory = await fs.mkdtemp(path.join(os.tmpdir(), "councilkit-config-test-"));
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), "mergeloop-config-test-"));
   await fs.writeFile(
-    path.join(directory, "councilkit.settings.json"),
+    path.join(directory, "mergeloop.settings.json"),
     `${JSON.stringify(config, null, 2)}\n`,
     "utf8"
   );
@@ -28,7 +28,7 @@ test("maps legacy default_workers into routing fallback priority", async () => {
     },
     persistence: {
       enabled: false,
-      directory: "~/.councilkit/runs"
+      directory: "~/.mergeloop/runs"
     }
   });
 
@@ -67,7 +67,7 @@ test("worker command/timeouts override legacy runtime fields for built-ins", asy
     },
     persistence: {
       enabled: false,
-      directory: "~/.councilkit/runs"
+      directory: "~/.mergeloop/runs"
     }
   });
 

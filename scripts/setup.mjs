@@ -396,7 +396,7 @@ function buildSettingsPatch({
 }
 
 async function writeSettingsConfig({ cwd, patch, dryRun, now }) {
-  const settingsPath = path.join(cwd, "councilkit.settings.json");
+  const settingsPath = path.join(cwd, "mergeloop.settings.json");
   const { exists, value } = await readJsonIfExists(settingsPath);
   const merged = mergeObjects(value, patch);
   const changed = JSON.stringify(value) !== JSON.stringify(merged);
@@ -434,7 +434,7 @@ async function writeSettingsConfig({ cwd, patch, dryRun, now }) {
 }
 
 async function choosePersistenceDirectory(flags, rl) {
-  const defaultDir = "~/.councilkit/runs";
+  const defaultDir = "~/.mergeloop/runs";
   if (flags.yes || !rl) {
     return defaultDir;
   }
@@ -468,7 +468,7 @@ async function maybeConfigureHostMcp({
 
   const result = await upsertMcpServerConfig({
     filePath: host.path,
-    serverName: "councilkit",
+    serverName: "mergeloop",
     serverEntry,
     dryRun
   });
@@ -479,8 +479,8 @@ async function maybeConfigureHostMcp({
     changed: result.changed,
     wrote: result.wrote,
     note: result.changed
-      ? "CouncilKit MCP server entry merged."
-      : "CouncilKit MCP server entry already present; no change."
+      ? "MergeLoop MCP server entry merged."
+      : "MergeLoop MCP server entry already present; no change."
   };
 }
 
@@ -497,9 +497,9 @@ function printSummary({
   process.stdout.write(`Selected host: ${host.label}\n`);
   process.stdout.write(`Enabled workers: ${selectedWorkers.join(", ")}\n`);
   process.stdout.write(`Routing style: ${routingStyle}\n`);
-  process.stdout.write(`CouncilKit config: ${settingsResult.settingsPath}\n`);
+  process.stdout.write(`MergeLoop config: ${settingsResult.settingsPath}\n`);
   if (settingsResult.backupPath) {
-    process.stdout.write(`CouncilKit config backup: ${settingsResult.backupPath}\n`);
+    process.stdout.write(`MergeLoop config backup: ${settingsResult.backupPath}\n`);
   }
   if (hostResult.hostConfigPath) {
     process.stdout.write(`Host config path: ${hostResult.hostConfigPath}\n`);
@@ -517,21 +517,21 @@ function printSummary({
   process.stdout.write("1. npm run doctor\n");
   process.stdout.write("2. npm run smoke\n");
   if (host.id === "claude") {
-    process.stdout.write("3. claude --plugin-dir ./councilkit\n");
+    process.stdout.write("3. claude --plugin-dir ./MergeLoop\n");
   } else {
-    process.stdout.write("3. Restart/reload your selected host and run a council_run prompt.\n");
+    process.stdout.write("3. Restart/reload your selected host and run a mergeloop_run prompt.\n");
   }
 
   process.stdout.write("\nStarter prompts\n");
   process.stdout.write("---------------\n");
   process.stdout.write(
-    "1. Use councilkit.council_run in council mode with workers gemini, local, codex. Task: review this repository for release risks.\n"
+    "1. Use mergeloop.mergeloop_run in council mode with workers gemini, local, codex. Task: review this repository for release risks.\n"
   );
   process.stdout.write(
-    "2. Use councilkit.council_run in single mode with worker gemini. Task: summarize setup docs and list missing onboarding steps.\n"
+    "2. Use mergeloop.mergeloop_run in single mode with worker gemini. Task: summarize setup docs and list missing onboarding steps.\n"
   );
   process.stdout.write(
-    "3. Use councilkit.council_run in council mode. Task: produce disagreements and next checks for the current migration plan.\n"
+    "3. Use mergeloop.mergeloop_run in council mode. Task: produce disagreements and next checks for the current migration plan.\n"
   );
 }
 
@@ -552,7 +552,7 @@ async function main() {
   const rl = interactive ? createInterface({ input: process.stdin, output: process.stdout }) : null;
 
   try {
-    process.stdout.write("CouncilKit setup wizard\n");
+    process.stdout.write("MergeLoop setup wizard\n");
     process.stdout.write("=======================\n");
     process.stdout.write(`Working directory: ${cwd}\n`);
     if (flags.dryRun) {

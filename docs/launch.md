@@ -44,7 +44,7 @@ MCP-native. CLI-capable. API-optional.
 ### Important Notes
 
 - Worker CLIs must be installed/authenticated separately
-- CouncilKit orchestrates existing tools; it does not create extra quota
+- MergeLoop orchestrates existing tools; it does not create extra quota
 - Provider and host quotas still apply
 - Some integration paths remain documented/manual or experimental by design
 

@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-import type { CouncilKitSettings } from "../types/council.js";
+import type { MergeLoopSettings } from "../types/council.js";
 import { normalizePath } from "./path-utils.js";
 
 export interface DiscoveredMcpServer {
@@ -51,7 +51,7 @@ function parseServerEntries(configPath: string, rawContent: string): DiscoveredM
   return discovered;
 }
 
-function resolveMcpConfigPaths(settings: CouncilKitSettings, cwd: string): string[] {
+function resolveMcpConfigPaths(settings: MergeLoopSettings, cwd: string): string[] {
   const configuredPaths = settings.discovery?.mcp_config_paths ?? [];
   const defaults = [path.join(cwd, ".mcp.json")];
   const combined = [...configuredPaths, ...defaults];
@@ -66,7 +66,7 @@ function resolveMcpConfigPaths(settings: CouncilKitSettings, cwd: string): strin
 }
 
 export async function discoverMcpServers(
-  settings: CouncilKitSettings,
+  settings: MergeLoopSettings,
   cwd: string
 ): Promise<DiscoveredMcpServer[]> {
   const discoveryEnabled = settings.discovery?.enabled ?? true;

@@ -1,4 +1,4 @@
-Built an OSS host-agnostic model council called CouncilKit.
+Built an OSS host-agnostic model council called MergeLoop.
 
 Main idea:
 - bring your own host
@@ -9,4 +9,4 @@ It routes work across MCP and CLI workers and returns agreement/disagreement + r
 
 Positioning is clear: use subscriptions first, API optional.
 
-Repo: https://github.com/Mas-AI-Official/councilkit
+Repo: https://github.com/Mas-AI-Official/MergeLoop

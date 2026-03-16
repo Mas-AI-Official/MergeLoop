@@ -1,10 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-import type { CouncilKitSettings, LoadedSettings, WorkerDefinition } from "../types/council.js";
+import type { MergeLoopSettings, LoadedSettings, WorkerDefinition } from "../types/council.js";
 import { normalizePath } from "./path-utils.js";
 
-const DEFAULT_SETTINGS: CouncilKitSettings = {
+const DEFAULT_SETTINGS: MergeLoopSettings = {
   active_host: "generic_mcp_host",
   hosts: {
     claude_code: {
@@ -109,7 +109,7 @@ const DEFAULT_SETTINGS: CouncilKitSettings = {
   custom_workers: {},
   persistence: {
     enabled: true,
-    directory: "~/.councilkit/runs"
+    directory: "~/.mergeloop/runs"
   }
 };
 
@@ -161,7 +161,7 @@ function arraysEqual(left: string[] | undefined, right: string[] | undefined): b
   return true;
 }
 
-async function readJsonConfig(configPath: string): Promise<Partial<CouncilKitSettings>> {
+async function readJsonConfig(configPath: string): Promise<Partial<MergeLoopSettings>> {
   const raw = await fs.readFile(configPath, "utf8");
   const parsed = JSON.parse(raw) as unknown;
 
@@ -169,10 +169,10 @@ async function readJsonConfig(configPath: string): Promise<Partial<CouncilKitSet
     throw new Error(`Config file must contain an object: ${configPath}`);
   }
 
-  return parsed as Partial<CouncilKitSettings>;
+  return parsed as Partial<MergeLoopSettings>;
 }
 
-function mapLegacyFieldsToWorkers(settings: CouncilKitSettings): void {
+function mapLegacyFieldsToWorkers(settings: MergeLoopSettings): void {
   const workers: Record<string, WorkerDefinition> = { ...(settings.workers ?? {}) };
   const configuredDefaultWorkers = [...(settings.default_workers ?? [])];
 
@@ -293,7 +293,7 @@ function mapLegacyFieldsToWorkers(settings: CouncilKitSettings): void {
   settings.workers = workers;
 }
 
-function normalizeRuntimeSettings(settings: CouncilKitSettings): CouncilKitSettings {
+function normalizeRuntimeSettings(settings: MergeLoopSettings): MergeLoopSettings {
   const normalized = mergeSettings(DEFAULT_SETTINGS, settings);
   mapLegacyFieldsToWorkers(normalized);
   return normalized;
@@ -301,9 +301,9 @@ function normalizeRuntimeSettings(settings: CouncilKitSettings): CouncilKitSetti
 
 export async function loadSettings(cwd = process.cwd()): Promise<LoadedSettings> {
   const candidatePaths = [
-    process.env.COUNCILKIT_CONFIG,
-    path.join(cwd, "councilkit.settings.json"),
-    normalizePath("~/.councilkit/config.json")
+    process.env.MERGELOOP_CONFIG,
+    path.join(cwd, "mergeloop.settings.json"),
+    normalizePath("~/.mergeloop/config.json")
   ].filter((value): value is string => Boolean(value));
 
   for (const candidate of candidatePaths) {

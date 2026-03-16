@@ -19,11 +19,11 @@ import {
 
 function validateInput(input: CouncilRunInput): void {
   if (typeof input.task !== "string" || input.task.trim().length === 0) {
-    throw new Error("council_run requires a non-empty task string.");
+    throw new Error("mergeloop_run requires a non-empty task string.");
   }
 
   if (input.mode !== "single" && input.mode !== "council") {
-    throw new Error('council_run mode must be "single" or "council".');
+    throw new Error('mergeloop_run mode must be "single" or "council".');
   }
 
   if (
@@ -31,7 +31,7 @@ function validateInput(input: CouncilRunInput): void {
     input.output_format !== "json" &&
     input.output_format !== "markdown"
   ) {
-    throw new Error('council_run output_format must be "json" or "markdown".');
+    throw new Error('mergeloop_run output_format must be "json" or "markdown".');
   }
 }
 
@@ -52,7 +52,7 @@ export class CouncilOrchestrator {
 
     const selection = selectWorkersForTask(input, entries, settings);
     const selectedWorkers = selection.selected_worker_ids;
-    const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "councilkit-"));
+    const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "mergeloop-"));
 
     try {
       const results = await Promise.all(

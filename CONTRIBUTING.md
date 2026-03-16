@@ -11,14 +11,14 @@ npm run build
 ## Local Validation
 
 1. Install and authenticate the official `codex` and `gemini` CLIs locally.
-2. Edit `councilkit.settings.json` or `~/.councilkit/config.json`.
+2. Edit `mergeloop.settings.json` or `~/.mergeloop/config.json`.
 3. Start Claude Code with:
 
 ```bash
-claude --plugin-dir ./councilkit
+claude --plugin-dir ./MergeLoop
 ```
 
-4. Run `/councilkit:run` inside Claude Code and confirm the `council-hub` server starts automatically.
+4. Run `/mergeloop:run` inside Claude Code and confirm the `mergeloop-hub` server starts automatically.
 
 ## Pull Requests
 
