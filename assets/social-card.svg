@@ -25,7 +25,7 @@
   <rect x="70" y="70" width="1140" height="500" rx="24" fill="#111827" stroke="#334155"/>
 
   <text x="130" y="212" font-family="Segoe UI, Arial, sans-serif" font-size="90" font-weight="800">
-    <tspan fill="#2563EB">Council</tspan><tspan fill="#10B981">Kit</tspan>
+    <tspan fill="#2563EB">Merge</tspan><tspan fill="#10B981">Loop</tspan>
   </text>
   <text x="130" y="212" fill="url(#cardShine)" font-family="Segoe UI, Arial, sans-serif" font-size="90" font-weight="800">MergeLoop</text>
 

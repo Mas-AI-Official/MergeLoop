@@ -27,7 +27,7 @@
   <path d="M150 120L186 142V178L150 200L114 178V142L150 120Z" fill="#10B981"/>
 
   <text x="320" y="180" font-family="Segoe UI, Arial, sans-serif" font-size="98" font-weight="800">
-    <tspan fill="#2563EB">Council</tspan><tspan fill="#10B981">Kit</tspan>
+    <tspan fill="#2563EB">Merge</tspan><tspan fill="#10B981">Loop</tspan>
   </text>
   <text x="320" y="180" font-family="Segoe UI, Arial, sans-serif" font-size="98" font-weight="800" fill="url(#logoShine)">
     MergeLoop

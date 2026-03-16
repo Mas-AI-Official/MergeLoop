@@ -4,21 +4,15 @@
 
 ## One prompt. Many models. One answer.
 
-MergeLoop is a host-agnostic model council for MCP, CLI, and optional API workers.
-It routes tasks across selected workers and returns one unified answer.
-It is not Claude-only and it is not limited to fixed built-in workers.
+MergeLoop is a host-agnostic model council for MCP, CLI, and optional API workers. It routes tasks across selected workers and returns one unified answer.
 
-Bring your own host. Bring your own workers.
-MCP-native. CLI-capable. API-optional.
-
-Use your subscriptions first. Add APIs only when you want or need them.
-For many workflows, direct API setup is optional, not required.
-
-Provider and host quotas still apply.
+Bring your own host. Bring your own workers. Use your subscriptions first, then add API adapters only when you need them. MergeLoop is not Claude-only, not limited to fixed built-in workers, and not a quota bypass. Provider and host quotas still apply.
 
 ![MergeLoop Hero](./docs/demo/hero.svg)
 
 Static fallback: [docs/demo/hero-static.svg](./docs/demo/hero-static.svg)
+
+Quick links: [Quickstart](./docs/quickstart.md) · [Setup](./docs/setup.md) · [Gemini](./docs/gemini.md) · [Ollama](./docs/ollama.md) · [Integrations](./integrations/README.md)
 
 ### Get Started
 
@@ -28,6 +22,8 @@ npm run build
 npm run setup
 npm run doctor
 ```
+
+Most common local stack: Gemini + Ollama first, Codex when you want code-level review.
 
 ## Interactive Setup (Recommended)
 

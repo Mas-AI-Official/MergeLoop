@@ -25,7 +25,7 @@
   <rect x="48" y="40" width="1184" height="540" rx="26" fill="#111827" stroke="#334155"/>
 
   <text x="96" y="170" font-family="Segoe UI, Arial, sans-serif" font-size="90" font-weight="800">
-    <tspan fill="#2563EB">Council</tspan><tspan fill="#10B981">Kit</tspan>
+    <tspan fill="#2563EB">Merge</tspan><tspan fill="#10B981">Loop</tspan>
   </text>
   <text x="96" y="170" fill="url(#heroShine)" font-family="Segoe UI, Arial, sans-serif" font-size="90" font-weight="800">MergeLoop</text>
 

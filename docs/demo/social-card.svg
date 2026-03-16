@@ -11,7 +11,7 @@
   <rect x="72" y="72" width="1456" height="696" rx="28" fill="#0F172A" stroke="#334155" stroke-width="2"/>
 
   <text x="140" y="238" font-family="Segoe UI, Arial, sans-serif" font-size="104" font-weight="800">
-    <tspan fill="#2563EB">Council</tspan><tspan fill="#10B981">Kit</tspan>
+    <tspan fill="#2563EB">Merge</tspan><tspan fill="#10B981">Loop</tspan>
   </text>
   <text x="140" y="322" fill="url(#titleGrad)" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="700">One prompt. Many models. One answer.</text>
   <text x="140" y="392" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="42">Bring your own host. Bring your own workers.</text>

@@ -16,7 +16,7 @@
 
 ## Suggested Release Title
 
-`v0.1.0-beta.1 - Host-agnostic council runtime launch`
+`v0.1.0-beta.1 - MergeLoop public beta`
 
 ## Suggested GitHub About Line
 
