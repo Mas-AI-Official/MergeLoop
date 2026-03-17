@@ -35,6 +35,26 @@ npm run setup
 - non-interactive defaults:
   - `npm run setup -- --yes`
 
+## Which Host Should You Pick?
+
+- Gemini:
+  - `npm run setup -- --yes --host=gemini --workers=gemini,ollama,codex`
+  - writes to `~/.gemini/settings.json`
+- Antigravity:
+  - `npm run setup -- --yes --host=antigravity --workers=gemini,ollama,codex`
+  - writes to `~/.gemini/antigravity/mcp_config.json`
+- Generic MCP host:
+  - `npm run setup -- --yes --host=generic --workers=gemini,ollama,codex`
+  - writes repo-local `mergeloop.settings.json` and `./.mcp.json`
+  - best first test if you want to avoid touching home-directory configs
+- Claude Code:
+  - `npm run setup -- --yes --host=claude --workers=gemini,ollama,codex`
+  - keeps setup local and prints the `claude --plugin-dir` startup command
+- Cursor / Windsurf / OpenClaw / VS Code / Zed / Neovim / JetBrains:
+  - use the generic/manual path first
+  - then copy or adapt the generated MCP entry into the host-specific template under `integrations/`
+  - these are documented/manual integrations in this repo, not auto-written first-class host configs
+
 ## Post-Setup
 
 Setup prints:

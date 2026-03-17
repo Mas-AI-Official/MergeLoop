@@ -49,6 +49,21 @@ Auto-config status:
 - documented/manual via template write: generic MCP JSON
 - manual start command: Claude Code plugin path
 
+Common host-specific setup commands:
+
+```bash
+# Gemini settings auto-config
+npm run setup -- --yes --host=gemini --workers=gemini,ollama,codex
+
+# Antigravity MCP config auto-config
+npm run setup -- --yes --host=antigravity --workers=gemini,ollama,codex
+
+# Repo-local generic MCP config for safe testing
+npm run setup -- --yes --host=generic --workers=gemini,ollama,codex
+```
+
+For Cursor, Windsurf, OpenClaw, VS Code, Zed, Neovim, and JetBrains, use the generic/manual integration path after setup. MergeLoop can still be used there, but those hosts are template/manual integrations in this repo, not auto-written first-class host configs.
+
 Useful flags:
 
 ```bash
@@ -279,16 +294,19 @@ Template: [integrations/vscode/mcp.json](./integrations/vscode/mcp.json)
 ### Cursor (documented/manual)
 
 Template: [integrations/cursor/mcp.json](./integrations/cursor/mcp.json)
+Recommended path: run `npm run setup -- --yes --host=generic --workers=gemini,ollama,codex`, then adapt the generated/local MCP entry into your Cursor config using the template above.
 
 ### Windsurf (documented/manual)
 
 Template: [integrations/windsurf/mcp_config.json](./integrations/windsurf/mcp_config.json)
+Recommended path: run `npm run setup -- --yes --host=generic --workers=gemini,ollama,codex`, then copy the MergeLoop MCP entry into your Windsurf config.
 
 ### OpenClaw (documented/manual)
 
 Guides/templates:
 - [integrations/openclaw/README.md](./integrations/openclaw/README.md)
 - [integrations/openclaw/mcp-server-template.json](./integrations/openclaw/mcp-server-template.json)
+Recommended path: run `npm run setup -- --yes --host=generic --workers=gemini,ollama,codex`, then use the OpenClaw template to register the same MCP server entry.
 
 ### Zed (documented/manual)
 
