@@ -23,6 +23,14 @@ Recommended interactive onboarding:
 npm run setup
 ```
 
+Safe repo-local first run:
+
+```bash
+npm run setup -- --yes --host=generic --workers=gemini,ollama,codex
+```
+
+That keeps the first end-to-end test inside the repo by updating local `mergeloop.settings.json` and `.mcp.json` instead of writing to home-directory host configs.
+
 Check environment:
 
 ```bash

@@ -84,7 +84,12 @@ async function commandExists(command) {
 
 async function runCommand(command, args, cwd) {
   return new Promise((resolve) => {
-    const child = spawn(command, args, {
+    const commandToRun = process.platform === "win32" ? "cmd.exe" : command;
+    const commandArgs = process.platform === "win32"
+      ? ["/d", "/s", "/c", command, ...args]
+      : args;
+
+    const child = spawn(commandToRun, commandArgs, {
       cwd,
       stdio: "inherit",
       windowsHide: true
@@ -494,10 +499,10 @@ async function maybeConfigureHostMcp({
 
   return {
     hostConfigPath: host.path,
-      hostConfigBackup: result.backupPath,
-      changed: result.changed,
-      wrote: result.wrote,
-      note: result.changed
+    hostConfigBackup: result.backupPath,
+    changed: result.changed,
+    wrote: result.wrote,
+    note: result.changed
       ? "MergeLoop MCP server entry merged. Legacy CouncilKit MCP ids are replaced automatically if present."
       : "MergeLoop MCP server entry already present; no change."
   };
@@ -615,10 +620,16 @@ async function main() {
     });
 
     if (!flags.dryRun) {
-      const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
       process.stdout.write("\nRunning doctor and smoke checks...\n");
-      await runCommand(npmCommand, ["run", "doctor"], cwd);
-      await runCommand(npmCommand, ["run", "smoke"], cwd);
+      const doctorExitCode = await runCommand("npm", ["run", "doctor"], cwd);
+      if (doctorExitCode !== 0) {
+        throw new Error(`Post-setup doctor check failed with exit code ${doctorExitCode}.`);
+      }
+
+      const smokeExitCode = await runCommand("npm", ["run", "smoke"], cwd);
+      if (smokeExitCode !== 0) {
+        throw new Error(`Post-setup smoke check failed with exit code ${smokeExitCode}.`);
+      }
     }
   } finally {
     await rl?.close();

@@ -56,6 +56,14 @@ npm run setup -- --dry-run
 npm run setup -- --yes --host=gemini --workers=gemini,ollama,codex
 ```
 
+Safe repo-local first run:
+
+```bash
+npm run setup -- --yes --host=generic --workers=gemini,ollama,codex
+```
+
+That path writes `mergeloop.settings.json` and `.mcp.json` inside the repo so you can validate setup before touching home-directory host configs.
+
 Docs:
 
 - [docs/setup.md](./docs/setup.md)
